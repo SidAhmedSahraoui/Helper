@@ -1,23 +1,24 @@
 import React from "react";
 import {
-  BrowserRouter,
+  BrowserRouter as Router,
   Routes,
   Route,
 } from "react-router-dom";
+
 import './App.css';
-import Button from '@mui/material/Button';
 import Login from "./components/auth/login";
+import Home from "./components/pages/Home";
 function App() {
   return (
+  <Router>
     <div className="App">
-        <Button variant="contained">Hello World</Button>
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={Login} />
-          </Routes>
-        </BrowserRouter>
-
+      <Home />
+        <Routes>
+          <Route exact path='/' element={Home} />
+          <Route exact path='/login' element={Login} />
+        </Routes>
     </div>
+  </Router>
   );
 }
 
