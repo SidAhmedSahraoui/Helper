@@ -3,6 +3,8 @@ import colors from '../../styling/colors';
 
 const useStyles = createUseStyles({
   page: {
+    width:'90%',
+    margin:'auto',
     padding: '40px 20px',
     marginBottom: '40px',
     '& h1.title': {
