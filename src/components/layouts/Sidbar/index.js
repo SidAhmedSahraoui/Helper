@@ -16,13 +16,13 @@ const Sidbar = () => {
             <FontAwesomeIcon className='icon' icon={faHomeLg} />
         </div>
       </Link>
-      <Link to='/' className='link'>
+      <Link to='/messages' className='link'>
         <div className="element">
             <h4 className='name'>Messages</h4>
             <FontAwesomeIcon className='icon' icon={faMessage} />
         </div>
       </Link>
-      <Link to='/' className='link'>
+      <Link to='/posts' className='link'>
         <div className="element">
             <h4 className='name'>Help Requests</h4>
             <FontAwesomeIcon className='icon' icon={faHeartPulse} />

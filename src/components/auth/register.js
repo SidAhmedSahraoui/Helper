@@ -28,8 +28,8 @@ const Register = () => {
             <title>Helper | Register</title>
         </Helmet>
         <div className={`${classes.auth} card-shadow text-center`}>
-                <h3 className='title'>Sign In</h3>
-                <h6 className='subtitle'>Start helping other or getting help.</h6>
+                <h3 className='title'>Sign Up</h3>
+                <h6 className='subtitle'>Start helping others or getting help.</h6>
                 <form className='form' onSubmit={onSubmit}>
                     <div className="form-group">
                         <input 

@@ -58,7 +58,7 @@ export const CARD_SHADOW = {
 };
 
 export const INPUT_TEXT = {
-  fontWeight: 500,
+  fontWeight: 600,
   borderRadius: "8px",
   padding: "12px 24px",
   border: `2px solid ${colors["text-gray-400"]}`,

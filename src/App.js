@@ -5,13 +5,20 @@ import { Provider } from 'react-redux';
 
 // Redux store
 import store from './redux/store';
-import './App.css';
-import Home from "./components/pages/Home";
+
+// layouts
 import Navbar from "./components/layouts/Navbar"
 import Footer from "./components/layouts/Footer";
+
+// pages
+import Home from "./components/pages/Home";
 import Login from "./components/auth/login";
 import Register from "./components/auth/register";
 import Dashboard from "./components/pages/Dashboard";
+import Messages from "./components/pages/Messages";
+import Posts from "./components/pages/Posts";
+
+import './App.css';
 function App() {
   return (
     <Router>
@@ -23,6 +30,8 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/home" element={<Dashboard />} />
+            <Route path="/messages" element={<Messages />} />
+            <Route path="/posts" element={<Posts />} />
           </Routes>
         <Footer />
       </div>
