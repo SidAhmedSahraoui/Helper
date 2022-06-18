@@ -54,7 +54,7 @@ export const LINK_PRIMARY = {
 
 export const CARD_SHADOW = {
   borderRadius: "10px",
-  "box-shadow": `0px 12px 24px ${colors.primary}`,
+  "box-shadow": `0px 12px 24px ${colors["text-gray-700"]}`,
 };
 
 export const INPUT_TEXT = {

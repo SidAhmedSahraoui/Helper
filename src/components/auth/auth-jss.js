@@ -10,6 +10,7 @@ const useStyles = createUseStyles({
         width: '450px',
         margin: 'auto',
         marginBottom: '45px',
+        border: `2px solid ${colors["text-gray-800"]}`,
         '& .title': {
             color: colors.primary,
             margin: '8px',
