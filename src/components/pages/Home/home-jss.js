@@ -55,10 +55,11 @@ const useStyles = createUseStyles({
             alignItems: 'center',
             justifyContent : 'space-evenly',
             marginRight : '45px',
-            fontWeight: '400',
-            fontSize:'1rem',
+            fontWeight: '200',
+            fontSize:'1.3rem',
             '& h4' : {
-                color : colors['text-gray-700']
+                color : colors['text-gray-700'],
+                fontWeight: '400'
             },
             '& .icon' : {
                 fontSize :'1.9rem',

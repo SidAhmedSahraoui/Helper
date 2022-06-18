@@ -11,6 +11,7 @@ import Navbar from "./components/layouts/Navbar"
 import Footer from "./components/layouts/Footer";
 import Login from "./components/auth/login";
 import Register from "./components/auth/register";
+import Dashboard from "./components/pages/Dashboard";
 function App() {
   return (
     <Router>
@@ -21,6 +22,7 @@ function App() {
             <Route index element={<Home />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
+            <Route path="/home" element={<Dashboard />} />
           </Routes>
         <Footer />
       </div>
