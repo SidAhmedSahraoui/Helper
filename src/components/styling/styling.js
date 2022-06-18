@@ -54,16 +54,16 @@ export const LINK_PRIMARY = {
 
 export const CARD_SHADOW = {
   borderRadius: "10px",
-  "box-shadow": "0px 13px 26px rgb(109,184,241, 0.16)",
+  "box-shadow": `0px 12px 24px ${colors.primary}`,
 };
 
 export const INPUT_TEXT = {
   fontWeight: 500,
-  borderRadius: "10px",
-  padding: "8px 20px",
-  border: `2px solid ${colors["text-gray-200"]}`,
+  borderRadius: "8px",
+  padding: "12px 24px",
+  border: `2px solid ${colors["text-gray-400"]}`,
   "&:focus": {
-    borderColor: colors["text-gray-400"],
+    borderColor: colors["text-gray-600"],
   },
 };
 

@@ -1,6 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 import { Helmet } from 'react-helmet';
+import { Link } from 'react-router-dom';
 import useStyles from './auth-jss';
 const Login = () => {
 const [user , setUser] = useState({
@@ -22,7 +23,7 @@ const onChange = (e) => setUser({...user , [e.target.name]: e.target.value })
     return(
         <>
         <Helmet>
-            <title>My App | login</title>
+            <title>Helper | login</title>
         </Helmet>
             <div className={`${classes.auth} card-shadow text-center`}>
                 <h3 className='title'>Sign In</h3>
@@ -52,6 +53,7 @@ const onChange = (e) => setUser({...user , [e.target.name]: e.target.value })
                     type="submit" 
                     value="Login" 
                     className='button-primary' />
+                    <Link to='/register' className='link-primary'> create account?</Link>
                 </form>
             </div>
         </>
