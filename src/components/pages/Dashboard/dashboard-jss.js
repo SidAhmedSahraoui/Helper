@@ -1,6 +1,6 @@
 import { createUseStyles } from 'react-jss';
 import colors from '../../styling/colors';
-import { BUTTON_PRIMARY_OUTLINE, CARD_SHADOW, INPUT_TEXT } from '../../styling/styling';
+import { BUTTON_PRIMARY_OUTLINE, INPUT_TEXT } from '../../styling/styling';
 
 const useStyles = createUseStyles({
   dash: {
@@ -8,6 +8,7 @@ const useStyles = createUseStyles({
     marginBottom: '40px',
     display: 'flex',
     justifyContent: 'flex-start',
+   
     '& .main' : {
       padding: '24px',
       marginLeft: '12px',
@@ -20,10 +21,14 @@ const useStyles = createUseStyles({
       textAlign: 'center',
       display: 'flex',
       justifyContent:'space-evenly',
+      flexWrap: 'wrap',
       '& span': {
         width: '3px',
         height: '80vh',
-        backgroundColor: colors['text-gray-900']
+        backgroundColor: colors['text-gray-900'],
+        '@media screen and (max-width: 780px)':{
+          display: 'none'
+        },
       },
       '& .title': {
         color: colors['text-gray-900']

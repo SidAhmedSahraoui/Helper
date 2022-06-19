@@ -6,6 +6,16 @@ const useStyles = createUseStyles({
   navbar: {
     paddingTop: '20px',
     paddingBottom: '20px',
+    '& .dropdown': {
+      backgroundColor:'black',
+      color: colors['text-gray-800'],
+      '& .dropdown-toggle::after': {
+        display: 'none',
+      },
+        '&:hover': {
+          color: colors['text-gray-900'],
+      },
+    },
     '& .container' : {
       width:'80%',
       margin: 'auto',

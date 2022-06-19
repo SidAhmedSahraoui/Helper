@@ -14,6 +14,9 @@ const useStyles = createUseStyles({
     borderBottom : `3px solid ${colors['text-gray-500']}`,
     borderRight : `3px solid ${colors['text-gray-500']}`,
     backgroundColor: colors['text-gray-400'],
+    '@media screen and (max-width: 780px)':{
+      width: '50px'
+    },
     '& .link':  {
         textDecoration: 'none',
         '& .element': {
@@ -31,6 +34,9 @@ const useStyles = createUseStyles({
         '& .name' : {
             fontWeight: '200',
             marginLeft: '15px',
+            '@media screen and (max-width: 780px)':{
+              display: 'none'
+            },
         },
         '& .icon': {
             marginLeft: '15px'

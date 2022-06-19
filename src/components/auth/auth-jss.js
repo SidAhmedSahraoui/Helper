@@ -11,6 +11,9 @@ const useStyles = createUseStyles({
         margin: 'auto',
         marginBottom: '45px',
         border: `2px solid ${colors["text-gray-800"]}`,
+        '@media screen and (max-width: 550px)': {
+            width: '90%'                
+        },
         '& .title': {
             color: colors.primary,
             margin: '8px',
