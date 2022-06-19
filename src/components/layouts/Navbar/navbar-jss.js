@@ -6,22 +6,48 @@ const useStyles = createUseStyles({
   navbar: {
     paddingTop: '20px',
     paddingBottom: '20px',
-    '& .dropdown': {
-      backgroundColor:'black',
-      color: colors['text-gray-800'],
-      '& .dropdown-toggle::after': {
-        display: 'none',
-      },
-        '&:hover': {
-          color: colors['text-gray-900'],
-      },
-    },
     '& .container' : {
       width:'80%',
       margin: 'auto',
       display: 'flex',
       justifyContent: 'space-between',
       alignItems : 'center',
+      '& .dropdown': {
+        listStyle: 'none',
+        color: colors['text-gray-800'],
+          '&:hover': {
+            color: colors['text-gray-900'],
+        },
+        '& .menu':{
+          display:'none !important',
+          '@media screen and (max-width: 740px)': {
+            display:'inline !important'
+          },
+        },
+        '& .dropdown-menu': {
+          width: '450px',
+          display: 'flex',
+          justifyContent: 'space-evenly',
+          flexWrap: 'wrap',
+          boxShadow: 'none',
+          '@media screen and (max-width: 740px)': {
+            display:'none'
+          },
+          '& .dropdown-item': {
+            textDecoration: 'none',
+            color: colors.primary,
+            padding: '8px 12px',
+            borderRadius: '10px',
+            '&:hover': {
+              color: colors['text-gray-100'],
+              backgroundColor: colors.primary
+            },
+            '& .icon': {
+              marginRight: '10px',
+            }
+          },
+        }
+      },      
       '& .links' : {
         width:'150px',
         display: 'flex',

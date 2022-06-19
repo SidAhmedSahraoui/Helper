@@ -3,16 +3,15 @@ import useStyles from './navbar-jss';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom'
 // Actions
-//import { logout, loadUser } from '../../../redux/actions/authActions';
+import { logout, loadUser } from '../../../redux/actions/authActions';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
-  faGripLines,
   faSignOutAlt,
   faEnvelope,
   faUser,
   faFileAlt,
-  faCheck,
 } from '@fortawesome/free-solid-svg-icons';
+import { faDashcube } from '@fortawesome/free-brands-svg-icons';
 const Navbar = (props) => {
     const classes = useStyles();
     const { isAuthenticated, user, logout, loadUser } = props;
@@ -25,17 +24,22 @@ const Navbar = (props) => {
     const authMenu = (
       <>
         <li className="dropdown">
-          <a href="#user" className='dropdown-toggle'> {user && user.username} </a>
-          <div className="dropdown-menu">
-            <Link className='dropdown-item' to='/home'>
-              <FontAwesomeIcon className='icon mr-2' icon={faFileAlt} />
-              Your posts
+          <div className="dropdown-menu menu">
+            <Link className='dropdown-item item' to='/home'>
+              <FontAwesomeIcon className='icon mr-2' icon={faDashcube} />
+              Dashboard
             </Link>
+          </div>
+          <div className="dropdown-menu">
             <Link className='dropdown-item' to='/home'>
               <FontAwesomeIcon className='icon mr-2' icon={faUser} />
               Profile
             </Link>
-            <Link className='dropdown-item' to='/home'>
+            <Link className='dropdown-item' to='/posts'>
+              <FontAwesomeIcon className='icon mr-2' icon={faFileAlt} />
+              Posts
+            </Link>
+            <Link className='dropdown-item' to='/messages'>
               <FontAwesomeIcon className='icon mr-2' icon={faEnvelope} />
               Messages
             </Link>
@@ -62,15 +66,15 @@ const Navbar = (props) => {
           <Link to='/' className='brand'>
             <h1>Logo</h1>
           </Link>
+          {authMenu}
         </div>
-     {authMenu}
     </nav>
     )
 }
-export default Navbar;
-/*const mapSateToProps = (state) => ({
+//export default Navbar;
+const mapSateToProps = (state) => ({
   isAuthenticated: state.auth.isAuthenticated,
   user: state.auth.user,
 });
 
-export default connect(mapSateToProps, { logout, loadUser })(Navbar);*/
+export default connect(mapSateToProps, { logout, loadUser })(Navbar);
