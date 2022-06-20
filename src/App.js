@@ -27,11 +27,11 @@ function App() {
         <Navbar />
           <Routes>
             <Route index element={<Home />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/register" element={<Register />} />
-            <Route path="/home" element={<Dashboard />} />
-            <Route path="/messages" element={<Messages />} />
-            <Route path="/posts" element={<Posts />} />
+            <Route exact path="/login" element={<Login />} />
+            <Route exact path="/register" element={<Register />} />
+            <Route exact path="/home" element={<Dashboard />} />
+            <Route exact path="/messages" element={<Messages />} />
+            <Route exact path="/posts" element={<Posts />} />
           </Routes>
         <Footer />
       </div>
