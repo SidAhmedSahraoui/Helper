@@ -64,9 +64,9 @@ const Navbar = (props) => {
     <nav className={`${classes.navbar} navbar navbar-expand-lg navbar-light bg-white`}>
        <div className="container">
           <Link to='/' className='brand'>
-            <h1>Logo</h1>
+            <h1 className='logo'>Helper</h1>
           </Link>
-          {authMenu}
+          {guest}
         </div>
     </nav>
     )

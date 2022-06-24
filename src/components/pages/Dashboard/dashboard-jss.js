@@ -45,9 +45,6 @@ const useStyles = createUseStyles({
       '& .button-primary': {
         ...BUTTON_PRIMARY_OUTLINE,
         margin: '12px 8px',
-        '&:hover': {
-          cursor:'pointer'
-        }
       }
     }
    

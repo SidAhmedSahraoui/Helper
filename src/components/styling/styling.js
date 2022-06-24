@@ -10,12 +10,17 @@ export const BUTTON_PRIMARY = {
 };
 
 export const BUTTON_PRIMARY_OUTLINE = {
-  background: "#fff",
+  background: colors["text-gray-100"],
   border: `2px solid ${colors.primary}`,
   borderRadius: "10px",
   fontWeight: 600,
   color: colors.primary,
   padding: "8px 20px !important",
+  '&:hover' : {
+    background : colors.primary,
+    color : colors["text-gray-100"],
+    cursor : 'pointer'
+  }
 };
 
 export const BUTTON_LIGHT = {

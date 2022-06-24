@@ -12,6 +12,13 @@ const useStyles = createUseStyles({
       display: 'flex',
       justifyContent: 'space-between',
       alignItems : 'center',
+      '& .brand': {
+        textDecoration: 'none',
+        '& .logo': {
+          color: colors.primary,
+          fontFamily: 'monospace'
+        }
+      },
       '& .dropdown': {
         listStyle: 'none',
         color: colors['text-gray-800'],

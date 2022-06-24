@@ -59,10 +59,11 @@ const useStyles = createUseStyles({
             fontSize:'1.3rem',
             '& h4' : {
                 color : colors['text-gray-700'],
-                fontWeight: '400'
+                fontWeight: '600',
+                fontSize: '16px'
             },
             '& .icon' : {
-                fontSize :'1.9rem',
+                fontSize :'1.5rem',
                 color : colors['danger']
             },
         }

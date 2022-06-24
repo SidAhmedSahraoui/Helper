@@ -9,7 +9,10 @@ const Footer = () =>{
         <>
         <footer className={`${classes.footer}`}>
             <div className="container">
-                <h4>Crafted with ❤ By {' '}
+                <h4>Crafted with {' '}
+                    <span role='img' aria-label='heart'>
+                        ❤️
+                    </span>{' '} By {' '}
                 <a href="https://github.com/SidAhmedSahraoui/Helper">
                     <FontAwesomeIcon className='icon' icon={faGithub} />
                 </a>
