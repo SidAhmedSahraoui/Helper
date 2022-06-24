@@ -53,7 +53,7 @@ const useStyles = createUseStyles({
             display: 'flex',
             width:'250px',
             alignItems: 'center',
-            justifyContent : 'space-evenly',
+            justifyContent : 'flex-start',
             marginRight : '45px',
             fontWeight: '200',
             fontSize:'1.3rem',
@@ -64,6 +64,7 @@ const useStyles = createUseStyles({
             },
             '& .icon' : {
                 fontSize :'1.5rem',
+                marginRight: '12px',
                 color : colors['danger']
             },
         }
