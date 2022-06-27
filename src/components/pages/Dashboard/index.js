@@ -1,5 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
+import axios from '../../../API';
 import Sidbar from '../../layouts/Sidbar';
 import useStyles from './dashboard-jss'
 const Dashboard = () => {
@@ -14,6 +15,7 @@ const Dashboard = () => {
     const onSubmit = (e) => {
         e.preventDefault()
         console.log(post);
+        axios.post('/posts.json' , post)
     }
     return(
         <>

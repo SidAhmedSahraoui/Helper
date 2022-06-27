@@ -1,8 +1,8 @@
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
     primary: '#9340e6',
-    danger: '#dc5f5f',
-    success: '#67C8DC',
+    danger: '#ff3f3f',
+    success: '#39ffb6',
     'text-gray-100': '#f7fafc',
     'text-gray-200': '#edf2f7',
     'text-gray-300': '#e2e8f0',

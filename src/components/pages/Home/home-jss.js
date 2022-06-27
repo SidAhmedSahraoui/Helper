@@ -50,20 +50,32 @@ const useStyles = createUseStyles({
         justifyContent : 'flex-start',
         flexWrap : 'wrap',
         '& .service' : {
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'flex-start',
+          '& p': {
+            color: colors['text-gray-700'],
+            fontWeight: 600,
+            fontSize: "16px",
+            maxWidth: '285px'
+          },
+          '& .row' : {
             display: 'flex',
-            width:'250px',
+            width:'300px',
             alignItems: 'center',
             justifyContent : 'flex-start',
             marginRight : '45px',
             fontWeight: '200',
             fontSize:'1.3rem',
             '& h4' : {
-                color : colors['text-gray-700'],
-                fontWeight: '600',
-                fontSize: '16px'
+                color: colors['text-gray-900'],
+                fontWeight: 600,
+                fontSize: '18px'
             },
+          },
+            
             '& .icon' : {
-                fontSize :'1.5rem',
+                fontSize :'26px',
                 marginRight: '12px',
                 color : colors['danger']
             },
