@@ -1,7 +1,7 @@
-import React from 'react';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { Helmet } from 'react-helmet';
 import { Link } from 'react-router-dom';
+import { Card } from '@mui/material';
 import useStyles from './auth-jss';
 const Login = () => {
 const [user , setUser] = useState({
@@ -10,13 +10,13 @@ const [user , setUser] = useState({
 })
 const {username , password} = user;
 const classes = useStyles();
-const onSubmit = (e) => {
+const onSubmit = async (e) => {
     e.preventDefault();
-    if(username === '' || password === ''){
-        console.log('error')
+    if ( username === '' || password === '' ){
+        console.log('Please enter all fields')
     }
-    else{
-        console.log(user);
+    else {
+        await console.log('login');
     }
 }
 const onChange = (e) => setUser({...user , [e.target.name]: e.target.value })
@@ -25,7 +25,7 @@ const onChange = (e) => setUser({...user , [e.target.name]: e.target.value })
         <Helmet>
             <title>Helper | login</title>
         </Helmet>
-            <div className={`${classes.auth} card-shadow text-center`}>
+            <Card className={`${classes.auth} card-shadow text-center`}>
                 <h3 className='title'>Sign In</h3>
                 <h6 className='subtitle'>Start helping others or getting help.</h6>
                 <form className='form' onSubmit={onSubmit}>
@@ -55,7 +55,7 @@ const onChange = (e) => setUser({...user , [e.target.name]: e.target.value })
                     className='button-primary' />
                     <Link to='/register' className='link-primary'> create account?</Link>
                 </form>
-            </div>
+            </Card>
         </>
     )
 }

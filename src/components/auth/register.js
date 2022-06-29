@@ -1,24 +1,28 @@
-import React from 'react';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { Helmet } from 'react-helmet';
 import { Link } from 'react-router-dom';
+import { Card } from '@mui/material';
 import useStyles from './auth-jss';
 const Register = () => {
     const [user , setUser] = useState({
         username:'',
         email:'',
+        phone:'',
         password:'',
         password2:''
     })
-    const {username , email , password , password2} = user;
+    const {username , email , phone , password , password2} = user;
     const classes = useStyles();
-    const onSubmit = (e) => {
+    const onSubmit = async (e) => {
         e.preventDefault();
-        if(username === '' || password === '' || password === '' || password !== password2){
-            console.log('error')
-        }
-        else{
-            console.log(user);
+        if(username === '' || email === '' || phone === '' || password === ''){
+            console.log('Please enter all fields')
+        } else if (password.length < 6) {
+            console.log('Password must contain at least 6 characters');
+        } else if ( password !== password2 ) {
+            console.log('Passwords do not match')
+        } else {
+           await console.log('register')
         }
     }
     const onChange = (e) => setUser({...user , [e.target.name]: e.target.value })
@@ -27,7 +31,7 @@ const Register = () => {
         <Helmet>
             <title>Helper | Register</title>
         </Helmet>
-        <div className={`${classes.auth} card-shadow text-center`}>
+        <Card className={`${classes.auth} card-shadow text-center`}>
                 <h3 className='title'>Sign Up</h3>
                 <h6 className='subtitle'>Start helping others or getting help.</h6>
                 <form className='form' onSubmit={onSubmit}>
@@ -48,6 +52,16 @@ const Register = () => {
                         name='email' 
                         value={email} 
                         placeholder='Email' 
+                        onChange={onChange} 
+                        required />
+                    </div>
+                    <div className="form-group">
+                        <input 
+                        type="text" 
+                        className="text-input" 
+                        name='phone' 
+                        value={phone} 
+                        placeholder='Phone' 
                         onChange={onChange} 
                         required />
                     </div>
@@ -77,7 +91,7 @@ const Register = () => {
                     className='button-primary' />
                     <Link to='/login' className='link-primary'> Have an account?</Link>
                 </form>
-            </div>
+            </Card>
         </>
     )
 }

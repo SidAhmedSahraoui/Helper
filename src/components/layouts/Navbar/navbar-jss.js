@@ -16,7 +16,8 @@ const useStyles = createUseStyles({
         textDecoration: 'none',
         '& .logo': {
           color: colors.primary,
-          fontFamily: 'monospace'
+          fontFamily: 'monospace',
+          fontSize: '28px',
         }
       },
       '& .dropdown': {

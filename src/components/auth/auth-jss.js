@@ -1,16 +1,16 @@
 import { createUseStyles } from "react-jss";
 import colors from "../styling/colors";
-import { BUTTON_PRIMARY, CARD_SHADOW, INPUT_TEXT, LINK_PRIMARY } from "../styling/styling";
+import { BUTTON_PRIMARY, INPUT_TEXT, LINK_PRIMARY } from "../styling/styling";
 
 const useStyles = createUseStyles({
     auth : {
-        ...CARD_SHADOW,
         padding : '12px',
         textAlign: 'center',
         width: '450px',
         margin: 'auto',
         marginBottom: '45px',
-        border: `2px solid ${colors["text-gray-800"]}`,
+        backgroundColor: `${colors["text-gray-200"]} !important` ,
+        border: `2px solid ${colors["text-gray-500"]}`,
         '@media screen and (max-width: 550px)': {
             width: '90%'                
         },

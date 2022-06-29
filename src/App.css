@@ -11,6 +11,10 @@
     transition: 0.5s all ease-in-out;
     color: #3f3f3f;
     overflow-y: scroll;
+    margin: 0%;
+  }
+  .App {
+    height: 100vh;
   }
   
   a {

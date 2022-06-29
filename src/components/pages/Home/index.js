@@ -5,7 +5,7 @@ import {
   faCoins,
   faUserDoctor,
 } from "@fortawesome/free-solid-svg-icons";
-
+import { Card } from "@mui/material"
 import useStyles from "./home-jss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
@@ -21,7 +21,7 @@ const Home = () => {
         <h1 className="title text-center">Helper!</h1>
         <h5>
           {" "}
-          Charity platform for requesting and giving <span>help</span> for those
+          Charity website for requesting and giving <span>help</span> for those
           who <span>need</span>.
         </h5>
         <h5>
@@ -31,7 +31,7 @@ const Home = () => {
           Our Services <span className="line"></span>
         </h3>
         <div className="services">
-          <div className="service">
+          <Card className="service">
             <div className="row">
               <FontAwesomeIcon className="icon" icon={faGraduationCap} />
               <h4>Educational Helps</h4>
@@ -41,8 +41,8 @@ const Home = () => {
               other topic! dont worry, just drop your help request and wait, for
               sure someone expert will contact you!
             </p>
-          </div>
-          <div className="service">
+          </Card>
+          <Card className="service">
             <div className="row">
               <FontAwesomeIcon className="icon" icon={faCoins} />
               <h4>Financial Helps</h4>
@@ -52,8 +52,8 @@ const Home = () => {
               communication tool between those who pass in a financial crise and
               aiders
             </p>
-          </div>
-          <div className="service">
+          </Card>
+          <Card className="service">
             <div className="row">
               <FontAwesomeIcon className="icon" icon={faUserDoctor} />
               <h4>Medical Helps</h4>
@@ -62,7 +62,7 @@ const Home = () => {
               for those who need medical helps , drop your help request and wait
               for doctors or nurses to answer you
             </p>
-          </div>
+          </Card>
         </div>
       </div>
     </>

@@ -53,6 +53,11 @@ const useStyles = createUseStyles({
           display: 'flex',
           flexDirection: 'column',
           justifyContent: 'flex-start',
+          height: '210px',
+          padding: '8px 24px',
+          margin: 'auto 12px',
+          marginBottom: '8px',
+          backgroundColor: colors['text-gray-200'],
           '& p': {
             color: colors['text-gray-700'],
             fontWeight: 600,
