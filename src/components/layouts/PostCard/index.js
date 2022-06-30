@@ -1,18 +1,21 @@
 import React from "react";
 import useStyles from "./Post-jss";
-import { Card } from "@mui/material";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faGraduationCap,
   faCoins,
   faUserDoctor,
+  faPhone,
+  faPaperPlane,
+  faLocationDot
 } from "@fortawesome/free-solid-svg-icons";
+import { TableRow } from '@mui/material'
 const Post = (props) => {
   const classes = useStyles();
-  const { id, title, content, category, city, createdAt } = props;
+  const { title, content, category } = props;
 
   return (
-    <Card className={classes.post}>
+    <div className={classes.post}>
       <div className="head">
         <h2 className="title">{title} </h2>
         <FontAwesomeIcon
@@ -27,13 +30,23 @@ const Post = (props) => {
           className="icon"
         />
       </div>
+      <div className="position">
+      <FontAwesomeIcon icon={faLocationDot}/> Relizane
+      </div>
       <div className="core">
         <p className="content">{content}</p>
       </div>
-      <h1>{city}</h1>
-      <h1>{createdAt}</h1>
-      <h1>{id}</h1>
-    </Card>
+      <div className="contact">
+        <TableRow className="call">
+          <h3>Call</h3>
+          <FontAwesomeIcon icon={faPhone} size='lg' />
+        </TableRow>
+        <div className="call msg">
+          <h3>Message</h3>
+          <FontAwesomeIcon icon={faPaperPlane} size='lg' />
+        </div>
+      </div>
+    </div>
   );
 };
 export default Post;

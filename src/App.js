@@ -1,5 +1,5 @@
 import React from "react";
-import {BrowserRouter as Router , Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 
 import { Provider } from 'react-redux';
 
@@ -21,7 +21,6 @@ import Posts from "./components/pages/Posts";
 import './App.css';
 function App() {
   return (
-    <Router>
       <Provider store={store}>
       <div className="App">
         <Navbar />
@@ -36,7 +35,6 @@ function App() {
         <Footer />
       </div>
       </Provider>
-    </Router>
    
   );
 }

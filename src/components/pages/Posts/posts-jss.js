@@ -6,7 +6,7 @@ const useStyles = createUseStyles({
     padding: '0px',
     marginBottom: '40px',
     display: 'flex',
-    justifyContent: 'flex-start',
+    justifyContent: 'flex-start',    
     '& .main' : {
       padding: '24px',
       marginLeft: '12px',
