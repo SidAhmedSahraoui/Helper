@@ -9,7 +9,6 @@ import {
   faPaperPlane,
   faLocationDot
 } from "@fortawesome/free-solid-svg-icons";
-import { TableRow } from '@mui/material'
 const Post = (props) => {
   const classes = useStyles();
   const { title, content, category } = props;
@@ -37,13 +36,13 @@ const Post = (props) => {
         <p className="content">{content}</p>
       </div>
       <div className="contact">
-        <TableRow className="call">
+        <div className="call">
           <h3>Call</h3>
-          <FontAwesomeIcon icon={faPhone} size='lg' />
-        </TableRow>
+          <FontAwesomeIcon className="icon" icon={faPhone} size='lg' />
+        </div>
         <div className="call msg">
           <h3>Message</h3>
-          <FontAwesomeIcon icon={faPaperPlane} size='lg' />
+          <FontAwesomeIcon className="icon" icon={faPaperPlane} size='lg' />
         </div>
       </div>
     </div>

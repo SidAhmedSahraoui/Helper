@@ -12,7 +12,7 @@ const useStyles = createUseStyles({
         backgroundColor: `${colors["text-gray-200"]} !important` ,
         border: `2px solid ${colors["text-gray-500"]}`,
         '@media screen and (max-width: 550px)': {
-            width: '90%'                
+            width: '80%'                
         },
         '& .title': {
             color: colors.primary,

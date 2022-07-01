@@ -10,9 +10,9 @@ const useStyles = createUseStyles({
         backgroundColor:'#fff',
         height: '210px',
         cursor: 'pointer',
-        '@media screen and (max-width: 490px)': {
-              width: '90%',
-          },
+        '@media screen and (max-width: 550px)': {
+            width: '80%'                
+        },
         '&:hover': {
             borderBottom: `4px solid ${colors.primary}`
         },
@@ -65,7 +65,15 @@ const useStyles = createUseStyles({
                 justifyContent: 'center',
                 '& h3': {
                     marginRight: '12px'
-                }
+                },
+                '@media screen and (max-width: 570px)': {
+                    '& h3': {
+                      display: 'none',
+                    },
+                    '& .icon': {
+                        padding: '12px'
+                    }
+                  },
             },
             '& .msg': {
                 width: '45%'

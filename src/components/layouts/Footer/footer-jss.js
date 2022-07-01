@@ -5,9 +5,6 @@ const useStyles = createUseStyles({
     footer : {
         padding: '12px 8px',
         margin: 'auto',
-        width: '450px',
-        position: 'relative',
-        bottom: '0px',
         '& .container':{
             textAlign : 'center',
             '& h4': {

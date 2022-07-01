@@ -1,8 +1,7 @@
 import React from 'react';
-
 import useStyles from './sidbar-jss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHomeLg , faMessage , faHeartPulse} from '@fortawesome/free-solid-svg-icons';
+import { faMessage ,faHeartPulse, faHandHoldingHand, faQuestionCircle } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
 const Sidbar = () => {
   const classes = useStyles();
@@ -12,8 +11,8 @@ const Sidbar = () => {
      <div className={classes.sid}>
       <Link to='/home' className='link'>
         <div className="element">
-            <h4 className='name'>Profile</h4>
-            <FontAwesomeIcon className='icon' icon={faHomeLg} />
+            <h4 className='name'>Add Post</h4>
+            <FontAwesomeIcon className='icon' icon={faQuestionCircle} />
         </div>
       </Link>
       <Link to='/messages' className='link'>
@@ -24,7 +23,7 @@ const Sidbar = () => {
       </Link>
       <Link to='/posts' className='link'>
         <div className="element">
-            <h4 className='name'>Help Requests</h4>
+            <h4 className='name'>Requests</h4>
             <FontAwesomeIcon className='icon' icon={faHeartPulse} />
         </div>
       </Link>

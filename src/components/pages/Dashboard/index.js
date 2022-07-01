@@ -1,6 +1,5 @@
 import React from 'react';
 import { useState } from 'react';
-import axios from '../../../API';
 import Sidbar from '../../layouts/Sidbar';
 import useStyles from './dashboard-jss'
 const Dashboard = () => {
@@ -8,14 +7,13 @@ const Dashboard = () => {
     const [post , setPost] = useState({
         title:'',
         description:'',
-        category:''
+        category:'Medical'
     })
     const { title , description , category } = post
     const onChange = (e) => setPost({...post , [e.target.name]:e.target.value})
     const onSubmit = (e) => {
         e.preventDefault()
         console.log(post);
-        axios.post('/posts.json' , post)
     }
     return(
         <>
@@ -38,8 +36,7 @@ const Dashboard = () => {
                          />
                     </div>
                     <div className="from-group">
-                        <input 
-                        type="textarea" 
+                        <textarea 
                         name='description'
                         className="text-input"
                         placeholder='Description'
@@ -50,19 +47,15 @@ const Dashboard = () => {
                     </div>
                     <div className="from-group">
                         <select name="category" value={category} className='select-input' onChange={onChange}>
-                            <option value="medical">Medical</option>
-                            <option value="education">Education</option>
-                            <option value="financial">Financial</option>
+                            <option value="Medical">Medical</option>
+                            <option value="Education">Education</option>
+                            <option value="Financial">Financial</option>
                         </select>
                     </div>
                     <div className="from-group">
                         <input type="submit" value="Add Request" className='button-primary' />
                     </div>
                    </form>
-                   <span></span>
-                   <div className="my_posts">
-                    Hello from my posts
-                   </div>
                 </div>
             </div>
         </>

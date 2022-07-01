@@ -2,12 +2,13 @@ import React, { useState } from 'react';
 import Sidbar from '../../layouts/Sidbar';
 import useStyles from './posts-jss';
 import Post from '../../layouts/PostCard';
+import { Alert } from '@mui/material';
 const Posts = () => {
     const [posts , setPosts] = useState([
         { id : '1', title:'eezc', content:'ev', category:'Medical', city:'eve', createdAt:'rfrf' },
-        { id : '1', title:'eezc', content:'ev', category:'Medical', city:'eve', createdAt:'rfrf' },
-        { id : '1', title:'eezc', content:'ev', category:'Education', city:'eve', createdAt:'rfrf' },
-        { id : '1', title:'eezc', content:'ev', category:'eczec', city:'eve', createdAt:'rfrf' }
+        { id : '2', title:'eezc', content:'ev', category:'Medical', city:'eve', createdAt:'rfrf' },
+        { id : '3', title:'eezc', content:'ev', category:'Education', city:'eve', createdAt:'rfrf' },
+        { id : '4', title:'eezc', content:'ev', category:'eczec', city:'eve', createdAt:'rfrf' }
     ])
     const classes = useStyles();
     
@@ -18,12 +19,13 @@ const Posts = () => {
                     <Sidbar />
                 </div>
                 <div className="main">
-                    {posts.map((post , index) => <Post id = {posts[index].id} 
-                                                       title = {posts[index].title}
-                                                       content = {posts[index].content}
-                                                       category = {posts[index].category}
-                                                       city = {posts[index].city}
-                                                       createdAt = {posts[index].createdAt}/>)}
+                    {posts.map((post) => <Post  key= {post.id}
+                                                id = {post.id} 
+                                                title = {post.title}
+                                                content = {post.content}
+                                                category = {post.category}
+                                                city = {post.city}
+                                                createdAt = {post.createdAt}/>)}
                 </div>
             </div>
         </>

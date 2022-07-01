@@ -10,7 +10,6 @@ const useStyles = createUseStyles({
     '& .main' : {
       padding: '24px',
       marginLeft: '12px',
-      width: '80%',
       backgroundColor: colors['text-gray-100'],
       borderBottom: `3px solid ${colors['text-gray-400']}`,
       borderRight: `3px solid ${colors['text-gray-400']}`,
