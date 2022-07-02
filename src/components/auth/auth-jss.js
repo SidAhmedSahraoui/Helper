@@ -5,6 +5,7 @@ import { BUTTON_PRIMARY, INPUT_TEXT, LINK_PRIMARY } from "../styling/styling";
 const useStyles = createUseStyles({
     auth : {
         padding : '12px',
+        marginTop: '45px',
         textAlign: 'center',
         width: '450px',
         margin: 'auto',
