@@ -63,9 +63,12 @@ const useStyles = createUseStyles({
                 backgroundColor: colors['text-gray-100'],
                 color: colors.primary,
                 justifyContent: 'center',
+                
                 '& h3': {
                     marginRight: '12px',
-                    margin: '8px'
+                    margin: '8px',
+                    fontWeight: 400,
+                    fontSize: '16px'
                 },
                 '@media screen and (max-width: 570px)': {
                     '& h3': {

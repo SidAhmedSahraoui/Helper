@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from "axios";
 
 import {
   SET_LOADING,
@@ -10,14 +10,11 @@ import {
   LOGOUT,
   AUTH_ERROR,
   CLEAR_ERRORS,
-  PROFILE_LOADED,
-  SET_LOADING_PROFILE,
-  UPDATE_PROFILE,
   UPDATE_PASSWORD,
   PROFILE_ERROR,
-} from '../types';
+} from "../types";
 
-import setAuthToken from '../../utils/setAuthToken';
+import setAuthToken from "../../utils/setAuthToken";
 
 // Load User
 export const loadUser = () => async (dispatch) => {
@@ -32,7 +29,7 @@ export const loadUser = () => async (dispatch) => {
 
   try {
     dispatch(setLoading());
-    const res = await axios.get('/users/self');
+    const res = await axios.get("/users");
 
     dispatch({
       type: USER_LOADED,
@@ -50,14 +47,14 @@ export const loadUser = () => async (dispatch) => {
 export const register = (formData) => async (dispatch) => {
   const config = {
     headers: {
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
     },
   };
 
   try {
     dispatch(setLoading());
 
-    const res = await axios.post('/users/register', formData, config);
+    const res = await axios.post("/users/register", formData, config);
 
     dispatch({
       type: REGISTER_SUCCESS,
@@ -79,14 +76,14 @@ export const register = (formData) => async (dispatch) => {
 export const login = (formData) => async (dispatch) => {
   const config = {
     headers: {
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
     },
   };
 
   try {
     dispatch(setLoading());
 
-    const res = await axios.post('/users/login', formData, config);
+    const res = await axios.post("/users/login", formData, config);
 
     dispatch({
       type: LOGIN_SUCCESS,
@@ -104,6 +101,27 @@ export const login = (formData) => async (dispatch) => {
   }
 };
 
+// Update password
+export const updatePassword = (formData) => async (dispatch) => {
+  const config = {
+    headers: {
+      "Content-Type": "application/json",
+    },
+  };
+
+  try {
+    dispatch(setLoading());
+    const res = await axios.put("/users", formData, config);
+
+    dispatch({ type: UPDATE_PASSWORD, payload: res.data });
+  } catch (error) {
+    console.log(error);
+    dispatch({
+      type: PROFILE_ERROR,
+      payload: error.response?.data?.msg,
+    });
+  }
+};
 // Logout
 export const logout = () => async (dispatch) => {
   dispatch({
@@ -119,81 +137,4 @@ export const setLoading = () => {
 // Clear errors
 export const clearErrors = () => {
   return { type: CLEAR_ERRORS };
-};
-
-// Load profile
-export const loadProfile = () => async (dispatch) => {
-  if (localStorage.token) {
-    setAuthToken(localStorage.token);
-  } else {
-    return;
-  }
-
-  try {
-    dispatch(setLoadingProfile());
-    const res = await axios.get('/users/self');
-
-    dispatch({
-      type: PROFILE_LOADED,
-      payload: res.data,
-    });
-  } catch (error) {
-    dispatch({
-      type: PROFILE_ERROR,
-      payload: error.response?.data?.msg,
-    });
-  }
-};
-
-// Update profile
-export const updateProfile = (formData) => async (dispatch) => {
-  const config = {
-    headers: {
-      'Content-Type': 'application/json',
-    },
-  };
-
-  try {
-    dispatch(setLoadingProfile());
-
-    const res = await axios.put('/users/update', formData, config);
-
-    dispatch({ type: UPDATE_PROFILE, payload: res.data });
-
-    dispatch(loadUser());
-  } catch (error) {
-    console.log(error);
-    dispatch({
-      type: PROFILE_ERROR,
-      payload: error.response?.data?.msg,
-    });
-  }
-};
-
-// Update password
-export const updatePassword = (formData) => async (dispatch) => {
-  const config = {
-    headers: {
-      'Content-Type': 'application/json',
-    },
-  };
-
-  try {
-    dispatch(setLoadingProfile());
-
-    const res = await axios.put('/users/auth', formData, config);
-
-    dispatch({ type: UPDATE_PASSWORD, payload: res.data });
-  } catch (error) {
-    console.log(error);
-    dispatch({
-      type: PROFILE_ERROR,
-      payload: error.response?.data?.msg,
-    });
-  }
-};
-
-// Set loading_profile to true
-export const setLoadingProfile = () => {
-  return { type: SET_LOADING_PROFILE };
 };

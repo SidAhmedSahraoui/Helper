@@ -6,10 +6,7 @@ import { Link } from 'react-router-dom'
 import { logout, loadUser } from '../../../redux/actions/authActions';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
-  faSignOutAlt,
-  faEnvelope,
-  faUser,
-  faFileAlt,
+  faSignOutAlt,faUserAlt
 } from '@fortawesome/free-solid-svg-icons';
 import { faDashcube } from '@fortawesome/free-brands-svg-icons';
 const Navbar = (props) => {
@@ -23,32 +20,18 @@ const Navbar = (props) => {
     }
     const authMenu = (
       <>
-        <li className="dropdown">
+        <div className="dropdown">
           <div className="dropdown-menu menu">
             <Link className='dropdown-item item' to='/home'>
-              <FontAwesomeIcon className='icon mr-2' icon={faDashcube} />
+              <FontAwesomeIcon className='icon mr-2' icon={faUserAlt} />
               Dashboard
-            </Link>
-          </div>
-          <div className="dropdown-menu">
-            <Link className='dropdown-item' to='/home'>
-              <FontAwesomeIcon className='icon mr-2' icon={faUser} />
-              Profile
-            </Link>
-            <Link className='dropdown-item' to='/posts'>
-              <FontAwesomeIcon className='icon mr-2' icon={faFileAlt} />
-              Posts
-            </Link>
-            <Link className='dropdown-item' to='/messages'>
-              <FontAwesomeIcon className='icon mr-2' icon={faEnvelope} />
-              Messages
             </Link>
             <a className='dropdown-item' onClick={onLogOut} href='#logout'>
               <FontAwesomeIcon className='icon mr-2' icon={faSignOutAlt} />
               Sign out
             </a>
           </div>
-        </li>
+        </div>
       </>
     )
     const guest = (
@@ -66,7 +49,7 @@ const Navbar = (props) => {
           <Link to='/' className='brand'>
             <h1 className='logo'>Helper</h1>
           </Link>
-          {guest}
+          {authMenu}
         </div>
     </nav>
     )

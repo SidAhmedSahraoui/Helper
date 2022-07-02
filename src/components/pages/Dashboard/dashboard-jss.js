@@ -3,8 +3,8 @@ import colors from "../../styling/colors";
 const useStyles = createUseStyles({
   dash: {
     padding: "0px",
-    marginBottom: "40px",
     display: "flex",
+    marginTop: '12px',
     justifyContent: "flex-start",
     "& .main": {
       padding: "24px",

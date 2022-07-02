@@ -1,10 +1,13 @@
 import { createUseStyles } from 'react-jss';
-import { BUTTON_PRIMARY , BUTTON_TRANSPARENT } from '../../styling/styling';
 import colors from '../../styling/colors';
 
 const useStyles = createUseStyles({
   navbar: {
     padding: '12px 0px',
+    position: 'sticky',
+    top: '0px',
+    backgroundColor: colors['text-gray-100'],
+    borderBottom: `3px solid ${colors['text-gray-400']}`,
     '& .container' : {
       width:'80%',
       margin: 'auto',
@@ -20,26 +23,18 @@ const useStyles = createUseStyles({
         }
       },
       '& .dropdown': {
-        listStyle: 'none',
+        width: '250px',
         color: colors['text-gray-800'],
           '&:hover': {
             color: colors['text-gray-900'],
         },
-        '& .menu':{
-          display:'none !important',
-          '@media screen and (max-width: 740px)': {
-            display:'inline !important'
-          },
-        },
+        
         '& .dropdown-menu': {
-          width: '450px',
+          width: '100%',
           display: 'flex',
-          justifyContent: 'space-evenly',
+          justifyContent: 'flex-start',
           flexWrap: 'wrap',
           boxShadow: 'none',
-          '@media screen and (max-width: 740px)': {
-            display:'none'
-          },
           '& .dropdown-item': {
             textDecoration: 'none',
             color: colors.primary,
@@ -52,22 +47,8 @@ const useStyles = createUseStyles({
             '& .icon': {
               marginRight: '10px',
             }
-          },
+          }
         }
-      },      
-      '& .links' : {
-        width:'150px',
-        display: 'flex',
-        justifyContent: 'space-evenly',
-        '& .button-primary': {
-          ...BUTTON_PRIMARY,
-          textDecoration:'none'
-        },
-        '& .link-primary': {
-          ...BUTTON_TRANSPARENT ,
-          textDecoration: 'none',
-          color: colors['text-gray-900'],
-        },
       }
     }
   },
