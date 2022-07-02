@@ -6,7 +6,7 @@ const useStyles = createUseStyles({
         margin: '12px auto',
         width: '350px',
         borderRadius: '12px !important',
-        boxShadow: `1px 3px 6px ${colors['text-gray-600']} !important`,
+        boxShadow: "0px 12px 24px rgb(109,184,241, 0.16)",
         backgroundColor:'#fff',
         height: '210px',
         cursor: 'pointer',
@@ -64,7 +64,8 @@ const useStyles = createUseStyles({
                 color: colors.primary,
                 justifyContent: 'center',
                 '& h3': {
-                    marginRight: '12px'
+                    marginRight: '12px',
+                    margin: '8px'
                 },
                 '@media screen and (max-width: 570px)': {
                     '& h3': {

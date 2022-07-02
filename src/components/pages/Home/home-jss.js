@@ -3,9 +3,10 @@ import colors from '../../styling/colors';
 
 const useStyles = createUseStyles({
   page: {
-    margin:'auto',
     padding: '40px 20px',
     marginBottom: '40px',
+    width:'80%',
+    margin: 'auto',
     '& h1.title': {
       color: colors['text-gray-900'],
       fontWeight: '700',
@@ -14,6 +15,9 @@ const useStyles = createUseStyles({
     },
 
     '@media screen and (max-width: 576px)': {
+      '& .page': {
+
+      },
       '& h1.title': {
         fontSize: '2rem',
       },
@@ -55,6 +59,7 @@ const useStyles = createUseStyles({
           height: '210px',
           padding: '8px 24px',
           margin: 'auto 12px',
+          width: '285px',
           marginBottom: '8px',
           backgroundColor: colors['text-gray-200'],
           '& p': {

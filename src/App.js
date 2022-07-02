@@ -15,8 +15,6 @@ import Home from "./components/pages/Home";
 import Login from "./components/auth/login";
 import Register from "./components/auth/register";
 import Dashboard from "./components/pages/Dashboard";
-import Messages from "./components/pages/Messages";
-import Posts from "./components/pages/Posts";
 
 import './App.css';
 function App() {
@@ -28,9 +26,7 @@ function App() {
             <Route index element={<Home />} />
             <Route exact path="/login" element={<Login />} />
             <Route exact path="/register" element={<Register />} />
-            <Route exact path="/home" element={<Dashboard />} />
-            <Route exact path="/messages" element={<Messages />} />
-            <Route exact path="/posts" element={<Posts />} />
+            <Route exact path="/home/*" element={<Dashboard />} />
           </Routes>
         <Footer />
       </div>

@@ -23,23 +23,6 @@ export const BUTTON_PRIMARY_OUTLINE = {
   }
 };
 
-export const BUTTON_LIGHT = {
-  background: colors["text-gray-100"],
-  borderRadius: "10px",
-  fontWeight: 500,
-  color: colors["text-gray-700"],
-  padding: "8px 20px !important",
-};
-
-export const BUTTON_GRAY = {
-  background: colors["text-gray-200"],
-  border: 0,
-  borderRadius: "10px",
-  fontWeight: 600,
-  color: colors["text-gray-800"] + " !important",
-  padding: "8px 20px !important",
-};
-
 export const BUTTON_TRANSPARENT = {
   background: "transparent",
   color: colors.primary,
@@ -72,15 +55,3 @@ export const INPUT_TEXT = {
   },
 };
 
-export const SIDEBAR_TITLE = {
-  fontWeight: 500,
-  color: colors["text-gray-500"],
-};
-
-export const POSTITEM_CARD = {
-  borderRadius: "10px",
-  border: "2px solid #eee",
-  "&:hover": {
-    "box-shadow": "0px 13px 26px rgb(109,184,241, 0.16)",
-  },
-};

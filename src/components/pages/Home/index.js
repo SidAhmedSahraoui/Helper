@@ -5,7 +5,7 @@ import {
   faCoins,
   faUserDoctor,
 } from "@fortawesome/free-solid-svg-icons";
-import { Card } from "@mui/material"
+import { Card } from "@mui/material";
 import useStyles from "./home-jss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
@@ -18,15 +18,16 @@ const Home = () => {
         <title>Helper!</title>
       </Helmet>
       <div className={`${classes.page}`}>
-        <h1 className="title text-center">Helper!</h1>
-        <h5>
-          {" "}
-          Charity website for requesting and giving <span>help</span> for those
-          who <span>need</span>.
-        </h5>
-        <h5>
-          <span>Create account and start helping others or request aid</span>
-        </h5>
+        <div className="row py-5 align-items-center">
+          <div className="col-12 col-lg-6 text-center text-lg-left">
+            <h1 className="title mx-auto mx-lg-0 ">Helper!</h1>
+
+            <h5 className="mx-auto mx-lg-0 mt-3">
+              <span>Charity website</span> for requesting and giving{" "}
+              <span>help</span> for those who <span>need</span>.
+            </h5>
+          </div>
+        </div>
         <h3>
           Our Services <span className="line"></span>
         </h3>

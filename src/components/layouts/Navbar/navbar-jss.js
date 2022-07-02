@@ -4,8 +4,7 @@ import colors from '../../styling/colors';
 
 const useStyles = createUseStyles({
   navbar: {
-    paddingTop: '20px',
-    paddingBottom: '20px',
+    padding: '12px 0px',
     '& .container' : {
       width:'80%',
       margin: 'auto',
