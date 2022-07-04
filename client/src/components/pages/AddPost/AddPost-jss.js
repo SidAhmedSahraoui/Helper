@@ -7,7 +7,8 @@ import {
 } from "../../styling/styling";
 
 const useStyles = createUseStyles({
-  form: {
+   AddPost : {
+    "& .form": {
     padding: "12px",
     textAlign: "center",
     width: "450px",
@@ -49,7 +50,7 @@ const useStyles = createUseStyles({
       width: "50%",
       margin: "12px 8px",
     },
-  },
+  },}
 });
 
 export default useStyles;

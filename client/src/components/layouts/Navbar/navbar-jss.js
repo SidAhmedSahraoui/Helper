@@ -1,5 +1,6 @@
 import { createUseStyles } from 'react-jss';
 import colors from '../../styling/colors';
+import { BUTTON_PRIMARY } from '../../styling/styling';
 
 const useStyles = createUseStyles({
   navbar: {
@@ -14,6 +15,12 @@ const useStyles = createUseStyles({
       display: 'flex',
       justifyContent: 'space-between',
       alignItems : 'center',
+      '& .links': {
+        '& .button-primary': {
+          ...BUTTON_PRIMARY,
+          textDecoration: 'none' 
+        }
+      },
       '& .brand': {
         textDecoration: 'none',
         '& .logo': {

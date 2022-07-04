@@ -1,9 +1,25 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet';
 import { Link } from 'react-router-dom';
 import { Card } from '@mui/material';
+import { connect } from 'react-redux'
 import useStyles from './auth-jss';
-const Register = () => {
+// Actions 
+import { register, clearErrors } from '../../redux/actions/authActions'
+
+const Register = (props) => {
+    const { isAuthenticated, error, loading, register, clearErrors } = props;
+    
+    const classes = useStyles();
+
+    useEffect(() => {
+        if (isAuthenticated) {
+          
+        }
+    
+        // eslint-disable-next-line
+      }, [isAuthenticated, props.history]);
+
     const [user , setUser] = useState({
         username:'',
         email:'',
@@ -11,8 +27,9 @@ const Register = () => {
         password:'',
         password2:''
     })
+    
     const {username , email , phone , password , password2} = user;
-    const classes = useStyles();
+    
     const onSubmit = async (e) => {
         e.preventDefault();
         if(username === '' || email === '' || phone === '' || password === ''){
@@ -22,7 +39,7 @@ const Register = () => {
         } else if ( password !== password2 ) {
             console.log('Passwords do not match')
         } else {
-           await console.log('register')
+           await register({username, email, phone, password})
         }
     }
     const onChange = (e) => setUser({...user , [e.target.name]: e.target.value })
@@ -95,4 +112,10 @@ const Register = () => {
         </>
     )
 }
-export default Register;
+const mapStateToProps = (state) => ({
+    error: state.auth.error,
+    isAuthenticated: state.auth.isAuthenticated,
+    loading: state.auth.loading,
+});
+
+export default connect(mapStateToProps, {register, clearErrors})(Register);

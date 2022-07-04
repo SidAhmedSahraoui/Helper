@@ -15,7 +15,6 @@ const initialState = {
   token: localStorage.getItem("token"),
   isAuthenticated: false,
   loading: true,
-  loading_profile: true,
   user: null,
   error: null,
 };
@@ -50,7 +49,7 @@ export default (state = initialState, action) => {
         isAuthenticated: false,
         loading: false,
         user: null,
-        error: action.payload || null,
+        error: action.payload ,
       };
     case SET_LOADING:
       return {
@@ -61,7 +60,7 @@ export default (state = initialState, action) => {
     case UPDATE_PASSWORD:
       return {
         ...state,
-        loading_profile: false,
+        loading: false,
       };
 
     case CLEAR_ERRORS:

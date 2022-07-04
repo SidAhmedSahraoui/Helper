@@ -11,8 +11,6 @@ connectDB();
 app.use(express.json({ extended: false }));
 
 // Routes
-app.use('/api/users', require('./routes/users'));
-app.use('/api/messages', require('./routes/messages'));
 app.use('/api/auth', require('./routes/auth'));
 
 // Serve static assets in production

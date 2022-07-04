@@ -20,17 +20,18 @@ import setAuthToken from "../../utils/setAuthToken";
 export const loadUser = () => async (dispatch) => {
   if (localStorage.token) {
     setAuthToken(localStorage.token);
+
   } else {
     dispatch({
       type: AUTH_ERROR,
     });
     return;
   }
+    //dispatch(setLoading());
 
   try {
-    dispatch(setLoading());
-    const res = await axios.get("/users");
-
+    const res = await axios.get("/api/auth");
+    console.log(res)
     dispatch({
       type: USER_LOADED,
       payload: res.data,
@@ -38,10 +39,11 @@ export const loadUser = () => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: AUTH_ERROR,
-      payload: error.response?.data?.msg,
+      payload: error.response?.data,
     });
   }
 };
+
 
 // Register User
 export const register = (formData) => async (dispatch) => {
@@ -54,7 +56,7 @@ export const register = (formData) => async (dispatch) => {
   try {
     dispatch(setLoading());
 
-    const res = await axios.post("/users/register", formData, config);
+    const res = await axios.post("/api/auth/register", formData, config);
 
     dispatch({
       type: REGISTER_SUCCESS,
@@ -83,7 +85,7 @@ export const login = (formData) => async (dispatch) => {
   try {
     dispatch(setLoading());
 
-    const res = await axios.post("/users/login", formData, config);
+    const res = await axios.post("/api/auth/login", formData, config);
 
     dispatch({
       type: LOGIN_SUCCESS,
@@ -111,7 +113,7 @@ export const updatePassword = (formData) => async (dispatch) => {
 
   try {
     dispatch(setLoading());
-    const res = await axios.put("/users", formData, config);
+    const res = await axios.put("/auth", formData, config);
 
     dispatch({ type: UPDATE_PASSWORD, payload: res.data });
   } catch (error) {

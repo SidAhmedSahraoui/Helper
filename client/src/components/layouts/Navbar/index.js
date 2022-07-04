@@ -8,23 +8,25 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faSignOutAlt,faUserAlt
 } from '@fortawesome/free-solid-svg-icons';
-import { faDashcube } from '@fortawesome/free-brands-svg-icons';
 const Navbar = (props) => {
     const classes = useStyles();
     const { isAuthenticated, user, logout, loadUser } = props;
     useEffect(() => {
-      //loadUser()
-    }, [])
+      if (isAuthenticated) {
+        loadUser()
+      }
+      // eslint-disable-next-line
+    }, [isAuthenticated])
     const onLogOut = () => {
-      //logout()
+      logout()
     }
     const authMenu = (
       <>
         <div className="dropdown">
           <div className="dropdown-menu menu">
-            <Link className='dropdown-item item' to='/home'>
+            <Link className='dropdown-item item' to='/profile'>
               <FontAwesomeIcon className='icon mr-2' icon={faUserAlt} />
-              Dashboard
+              { user && (user.username || user.email)}
             </Link>
             <a className='dropdown-item' onClick={onLogOut} href='#logout'>
               <FontAwesomeIcon className='icon mr-2' icon={faSignOutAlt} />
@@ -34,10 +36,9 @@ const Navbar = (props) => {
         </div>
       </>
     )
-    const guest = (
+    const guestMenu = (
       <>
           <div className='links'>
-            <Link to="/login" className='link-primary'>Login</Link>
             <Link to='/register' className='button-primary'> Register </Link>
           </div>
       </>
@@ -49,15 +50,15 @@ const Navbar = (props) => {
           <Link to='/' className='brand'>
             <h1 className='logo'>Helper</h1>
           </Link>
-          {authMenu}
+          { isAuthenticated? (authMenu) : (guestMenu)}
         </div>
     </nav>
     )
 }
 //export default Navbar;
-const mapSateToProps = (state) => ({
+const mapStateToProps = (state) => ({
   isAuthenticated: state.auth.isAuthenticated,
   user: state.auth.user,
 });
 
-export default connect(mapSateToProps, { logout, loadUser })(Navbar);
+export default connect(mapStateToProps, { logout, loadUser })(Navbar);

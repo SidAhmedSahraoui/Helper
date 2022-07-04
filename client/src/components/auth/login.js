@@ -1,24 +1,29 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet';
 import { Link } from 'react-router-dom';
 import { Card } from '@mui/material';
+import { connect } from 'react-redux'
 import useStyles from './auth-jss';
+// Actions 
+import { login, clearErrors } from '../../redux/actions/authActions'
+const Login = (props) => {
+    const { isAuthenticated, error, loading, login, clearErrors } = props;
 
-const Login = () => {
-const [user , setUser] = useState({
-    username:'',
-    password:'',
-})
+    const classes = useStyles();
+
+    const [user , setUser] = useState({
+        username:'',
+        password:'',
+    })
 
 const {username , password} = user;
-const classes = useStyles();
 const onSubmit = async (e) => {
     e.preventDefault();
     if ( username === '' || password === '' ){
         console.log('Please enter all fields')
     }
     else {
-        await console.log('login');
+        await login({username, password});
     }
 }
 const onChange = (e) => setUser({...user , [e.target.name]: e.target.value })
@@ -62,4 +67,10 @@ const onChange = (e) => setUser({...user , [e.target.name]: e.target.value })
     )
 }
 
-export default Login
+const mapStateToProps = (state) => ({
+    error: state.auth.error,
+    isAuthenticated: state.auth.isAuthenticated,
+    loading: state.auth.loading,
+});
+
+export default connect(mapStateToProps, {login, clearErrors})(Login);

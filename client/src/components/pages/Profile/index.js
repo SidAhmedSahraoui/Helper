@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from "react";
-import useStyles from './AddPost-jss'
-import { connect } from 'react-redux';
+import useStyles from './profile-jss'
 // Actions 
 //import { loadUser } from '../../../redux/actions/authActions';
 
-const AddPost = (props) => {
+const Profile = (props) => {
   //const { user, isAuthenticated, loadUser } = props;
   useEffect(() => {
     //loadUser()
@@ -25,7 +24,7 @@ const AddPost = (props) => {
     console.log(post);
   };
   return (
-    <div className={classes.AddPost} >
+    <div className={classes.profile} >
      { /*isAuthenticated ? ( <div className="user">
         <h1> Welcome { user && user.username} </h1> 
         <h3> {user && user.email} </h3>
@@ -72,4 +71,4 @@ const AddPost = (props) => {
   );
 };
 
-export default AddPost;
+export default Profile;
