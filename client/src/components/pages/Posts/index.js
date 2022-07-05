@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import useStyles from "./posts-jss";
 import Post from "../../layouts/PostCard";
+import { v4 as uuid } from "uuid"
+
 const Posts = () => {
   // eslint-disable-next-line
   const [posts, setPosts] = useState([
@@ -44,7 +46,7 @@ const Posts = () => {
       <div className={classes.posts}>
         {posts.map((post) => (
           <Post
-            key={post.id}
+            key={uuid()}
             id={post.id}
             title={post.title}
             content={post.content}

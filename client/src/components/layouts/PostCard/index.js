@@ -9,6 +9,7 @@ import {
   faPaperPlane,
   faLocationDot
 } from "@fortawesome/free-solid-svg-icons";
+
 const Post = (props) => {
   const classes = useStyles();
   const { title, content, category } = props;

@@ -1,24 +1,15 @@
-// alerts
-export const SET_ALERT = 'SET_ALERT';
-export const REMOVE_ALERT = 'REMOVE_ALERT';
-
 // auth
 export const SET_LOADING = 'SET_LOADING';
 export const REGISTER_SUCCESS = 'REGISTER_SUCCESS';
-export const REGISTER_FAIL = 'REGISTER_FAIL';
 export const USER_LOADED = 'USER_LOADED';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
-export const LOGIN_FAIL = 'LOGIN_FAIL';
 export const LOGOUT = 'LOGOUT';
 export const AUTH_ERROR = 'AUTH_ERROR';
 export const CLEAR_ERRORS = 'CLEAR_ERRORS';
 
 // user
-export const PROFILE_LOADED = 'PROFILE_LOADED';
-export const SET_LOADING_PROFILE = 'SET_LOADING_PROFILE';
 export const UPDATE_PROFILE = 'UPDATE_PROFILE';
 export const UPDATE_PASSWORD = 'UPDATE_PASSWORD';
-export const PROFILE_ERROR = 'PROFILE_ERROR';
 
 // post
 export const ADD_POST = 'ADD_POST';

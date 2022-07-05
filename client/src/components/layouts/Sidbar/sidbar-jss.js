@@ -29,7 +29,7 @@ const useStyles = createUseStyles({
         marginBottom: '18px',
         height: '45px',
         borderRadius: '10px',
-        color: colors['text-gray-900'],
+        color: colors.primary,
         textDecoration: 'none',
         '& .name' : {
             fontWeight: '200',

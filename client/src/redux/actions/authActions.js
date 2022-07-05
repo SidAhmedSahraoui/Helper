@@ -3,15 +3,12 @@ import axios from "axios";
 import {
   SET_LOADING,
   REGISTER_SUCCESS,
-  REGISTER_FAIL,
   USER_LOADED,
   LOGIN_SUCCESS,
-  LOGIN_FAIL,
   LOGOUT,
   AUTH_ERROR,
   CLEAR_ERRORS,
   UPDATE_PASSWORD,
-  PROFILE_ERROR,
 } from "../types";
 
 import setAuthToken from "../../utils/setAuthToken";
@@ -65,11 +62,9 @@ export const register = (formData) => async (dispatch) => {
 
     dispatch(loadUser());
   } catch (error) {
-    console.log(error);
-
     dispatch({
-      type: REGISTER_FAIL,
-      payload: error.response?.data?.msg,
+      type: AUTH_ERROR,
+      payload: error.response?.data,
     });
   }
 };
@@ -94,11 +89,9 @@ export const login = (formData) => async (dispatch) => {
 
     dispatch(loadUser());
   } catch (error) {
-    console.log(error);
-
     dispatch({
-      type: LOGIN_FAIL,
-      payload: error.response?.data?.msg,
+      type: AUTH_ERROR,
+      payload: error.response?.data,
     });
   }
 };
@@ -119,7 +112,7 @@ export const updatePassword = (formData) => async (dispatch) => {
   } catch (error) {
     console.log(error);
     dispatch({
-      type: PROFILE_ERROR,
+      type: AUTH_ERROR,
       payload: error.response?.data?.msg,
     });
   }

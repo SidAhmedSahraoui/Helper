@@ -44,13 +44,13 @@ router.post(
       });
 
       if (!user) {
-        return res.status(400).json([{ msg: 'Invalid Credentials' }]);
+        return res.status(400).json('Invalid Credentials');
       }
 
       const isMatch = await bcrypt.compare(password, user.password);
 
       if (!isMatch) {
-        return res.status(400).json([{ msg: 'Invalid Credentials' }]);
+        return res.status(400).json('Invalid Credentials');
       }
 
       const payload = {
@@ -105,7 +105,7 @@ router.post(
       if (user) {
         return res
           .status(400)
-          .json([{ msg: 'Username or Email already exists' }]);
+          .json('Username or Email already exists');
       }
 
       user = new User({ username, email, phone, password });
@@ -164,12 +164,12 @@ router.put(
     try {
       let user = await User.findById(req.user.id);
 
-      if (!user) return res.status(404).json([{ msg: 'User not found' }]);
+      if (!user) return res.status(404).json('User not found');
 
       const isMatch = await bcrypt.compare(old_password, user.password);
 
       if (!isMatch) {
-        return res.status(400).json([{ msg: 'Old password is incorrect' }]);
+        return res.status(400).json('Old password is incorrect');
       }
 
       // New user object

@@ -1,14 +1,13 @@
 import {
   SET_LOADING,
   REGISTER_SUCCESS,
-  REGISTER_FAIL,
   USER_LOADED,
   LOGIN_SUCCESS,
-  LOGIN_FAIL,
   LOGOUT,
   AUTH_ERROR,
   CLEAR_ERRORS,
   UPDATE_PASSWORD,
+  UPDATE_PROFILE,
 } from "../types";
 
 const initialState = {
@@ -30,17 +29,17 @@ export default (state = initialState, action) => {
         ...action.payload,
         isAuthenticated: true,
         loading: false,
+        error: null,
       };
     case USER_LOADED:
       return {
         ...state,
         isAuthenticated: true,
         loading: false,
-        user: action.payload,
+        user: action.payload ,
+        error: null,
       };
-    case REGISTER_FAIL:
     case AUTH_ERROR:
-    case LOGIN_FAIL:
     case LOGOUT:
       localStorage.removeItem("token");
       return {
@@ -58,6 +57,7 @@ export default (state = initialState, action) => {
       };
 
     case UPDATE_PASSWORD:
+    case UPDATE_PROFILE:
       return {
         ...state,
         loading: false,

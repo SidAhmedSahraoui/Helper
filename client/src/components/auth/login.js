@@ -6,6 +6,8 @@ import { connect } from 'react-redux'
 import useStyles from './auth-jss';
 // Actions 
 import { login, clearErrors } from '../../redux/actions/authActions'
+// Layouts
+import Alert from '../layouts/Alert';
 const Login = (props) => {
     const { isAuthenticated, error, loading, login, clearErrors } = props;
 
@@ -15,16 +17,12 @@ const Login = (props) => {
         username:'',
         password:'',
     })
+    
 
 const {username , password} = user;
 const onSubmit = async (e) => {
     e.preventDefault();
-    if ( username === '' || password === '' ){
-        console.log('Please enter all fields')
-    }
-    else {
-        await login({username, password});
-    }
+    await login({username, password});
 }
 const onChange = (e) => setUser({...user , [e.target.name]: e.target.value })
     return(

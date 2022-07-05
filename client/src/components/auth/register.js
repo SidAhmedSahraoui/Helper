@@ -32,11 +32,7 @@ const Register = (props) => {
     
     const onSubmit = async (e) => {
         e.preventDefault();
-        if(username === '' || email === '' || phone === '' || password === ''){
-            console.log('Please enter all fields')
-        } else if (password.length < 6) {
-            console.log('Password must contain at least 6 characters');
-        } else if ( password !== password2 ) {
+        if ( password !== password2 ) {
             console.log('Passwords do not match')
         } else {
            await register({username, email, phone, password})
