@@ -24,7 +24,7 @@ export const loadUser = () => async (dispatch) => {
     });
     return;
   }
-    //dispatch(setLoading());
+    dispatch(setLoading());
 
   try {
     const res = await axios.get("/api/auth");

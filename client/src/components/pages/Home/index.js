@@ -18,14 +18,17 @@ const Home = () => {
         <title>Helper!</title>
       </Helmet>
       <div className={`${classes.page}`}>
-        <div className="row py-5 align-items-center">
-          <div className="col-12 col-lg-6 text-center text-lg-left">
-            <h1 className="title mx-auto mx-lg-0 ">Helper!</h1>
+        <div className="row">
+          <div className="col">
+            <h1 className="title">Helper!</h1>
 
-            <h5 className="mx-auto mx-lg-0 mt-3">
+            <h5>
               <span>Charity website</span> for requesting and giving{" "}
               <span>help</span> for those who <span>need</span>.
             </h5>
+          </div>
+          <div className="col">
+            
           </div>
         </div>
         <h3>

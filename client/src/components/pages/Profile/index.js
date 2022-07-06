@@ -1,74 +1,51 @@
 import React, { useState, useEffect } from "react";
-import useStyles from './profile-jss'
-// Actions 
-//import { loadUser } from '../../../redux/actions/authActions';
+import { connect } from "react-redux";
+import useStyles from "./profile-jss";
+// Actions
+import { loadUser } from "../../../redux/actions/authActions";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faEnvelopeCircleCheck,
+  faMobilePhone,
+} from "@fortawesome/free-solid-svg-icons";
+// Layouts
+import Spinner from "../../layouts/Spinner";
 
 const Profile = (props) => {
-  //const { user, isAuthenticated, loadUser } = props;
-  useEffect(() => {
-    //loadUser()
-    // eslint-disable-next-line
-  }, [])
-  
-    const classes = useStyles();
+  const { user, isAuthenticated, loading, loadUser } = props;
+  const classes = useStyles();
 
-  const [post, setPost] = useState({
-    title: "",
-    description: "",
-    category: "Medical",
-  });
-  const { title, description, category } = post;
-  const onChange = (e) => setPost({ ...post, [e.target.name]: e.target.value });
-  const onSubmit = (e) => {
-    e.preventDefault();
-    console.log(post);
-  };
+  useEffect(() => {
+    loadUser();
+    // eslint-disable-next-line
+  }, []);
+
   return (
-    <div className={classes.profile} >
-     { /*isAuthenticated ? ( <div className="user">
-        <h1> Welcome { user && user.username} </h1> 
-        <h3> {user && user.email} </h3>
-  </div>) : null*/}
-    <form className="form" onSubmit={onSubmit}>
-      <h3 className="title">Add a new help request</h3>
-      <div className="from-group">
-        <input
-          type="text"
-          name="title"
-          className="text-input"
-          placeholder="Title"
-          value={title}
-          onChange={onChange}
-          required
-        />
-      </div>
-      <div className="from-group">
-        <textarea
-          name="description"
-          className="text-input"
-          placeholder="Description"
-          value={description}
-          onChange={onChange}
-          required
-        />
-      </div>
-      <div className="from-group">
-        <select
-          name="category"
-          value={category}
-          className="select-input"
-          onChange={onChange}>
-          <option value="Medical">Medical</option>
-          <option value="Education">Education</option>
-          <option value="Financial">Financial</option>
-        </select>
-      </div>
-      <div className="from-group">
-        <input type="submit" value="Add Request" className="button-outline" />
-      </div>
-    </form>
+    <div className={classes.profile}>
+      {isAuthenticated && user  ? (
+        <div className="user">
+          <h3>
+            {" "}
+            Welcome <span>👋</span> {user.username}{" "}
+          </h3>
+          <h5>
+            {" "}
+            <FontAwesomeIcon icon={faEnvelopeCircleCheck} />{" "}
+            {user.email}{" "}
+          </h5>
+          <p>
+            {" "}
+            <FontAwesomeIcon icon={faMobilePhone} /> {user.phone}{" "}
+          </p>
+        </div>
+      ) : <Spinner />}
     </div>
   );
 };
 
-export default Profile;
+const mapStateToProps = (state) => ({
+  user: state.auth.user,
+  isAuthenticated: state.auth.isAuthenticated,
+  loading: state.auth.loading,
+});
+export default connect(mapStateToProps, { loadUser })(Profile);

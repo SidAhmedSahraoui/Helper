@@ -9,7 +9,6 @@ import store from './redux/store';
 // layouts
 import Navbar from "./components/layouts/Navbar"
 import Footer from "./components/layouts/Footer";
-
 // pages
 import Home from "./components/pages/Home";
 import Login from "./components/auth/login";

@@ -15,9 +15,6 @@ const useStyles = createUseStyles({
     },
 
     '@media screen and (max-width: 576px)': {
-      '& .page': {
-
-      },
       '& h1.title': {
         fontSize: '2rem',
       },
