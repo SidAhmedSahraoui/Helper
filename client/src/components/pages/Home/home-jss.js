@@ -36,7 +36,6 @@ const useStyles = createUseStyles({
       fontWeight: '700',
       fontSize: '1.7rem',
       maxWidth: '250px',
-      position: 'relative',
       '& .line' : {
         width: '55px',
         height: '5px',

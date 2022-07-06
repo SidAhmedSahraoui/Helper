@@ -3,20 +3,21 @@ import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
 import { Card } from "@mui/material";
 import { connect } from "react-redux";
+import { Navigate } from "react-router";
 import useStyles from "./auth-jss";
 // Actions
 import { login, clearErrors } from "../../redux/actions/authActions";
 // App layouts
 import Spinner from "../layouts/Spinner";
+import Alert from "../layouts/Alert/Alert";
 
 const Login = (props) => {
-  const { isAuthenticated, loading, login, clearErrors } = props;
+  const { isAuthenticated, loading, error, login, clearErrors } = props;
 
   const classes = useStyles();
   useEffect(() => {
-    clearErrors()
-
-  }, [isAuthenticated,clearErrors]);
+    clearErrors();
+  }, [isAuthenticated, clearErrors]);
   const [user, setUser] = useState({
     username: "",
     password: "",
@@ -28,12 +29,17 @@ const Login = (props) => {
     await login({ username, password });
   };
   const onChange = (e) => setUser({ ...user, [e.target.name]: e.target.value });
+  if (isAuthenticated) {
+    return <Navigate to={"/profile"} />;
+  }
+
   return (
     <>
       <Helmet>
         <title>Helper | login</title>
       </Helmet>
       <Card className={`${classes.auth} card-shadow text-center`}>
+        {error && <Alert severity="error">{error}</Alert>}
         <h3 className="title">Sign In</h3>
         <h6 className="subtitle">Start helping others or getting help.</h6>
         <form className="form" onSubmit={onSubmit}>
@@ -79,6 +85,7 @@ const Login = (props) => {
 const mapStateToProps = (state) => ({
   isAuthenticated: state.auth.isAuthenticated,
   loading: state.auth.loading,
+  error: state.auth.error,
 });
 
 export default connect(mapStateToProps, { login, clearErrors })(Login);

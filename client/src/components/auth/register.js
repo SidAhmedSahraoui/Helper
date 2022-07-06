@@ -3,20 +3,21 @@ import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
 import { Card } from "@mui/material";
 import { connect } from "react-redux";
+import { Navigate } from "react-router";
 import useStyles from "./auth-jss";
 // Actions
 import { register, clearErrors } from "../../redux/actions/authActions";
 import Spinner from "../layouts/Spinner";
+import Alert from "../layouts/Alert/Alert";
 
 const Register = (props) => {
-  const { isAuthenticated, loading, register, clearErrors } = props;
+  const { isAuthenticated, loading, error, register, clearErrors } = props;
 
   const classes = useStyles();
 
   useEffect(() => {
-    clearErrors()
-
-  }, [isAuthenticated,clearErrors]);
+    clearErrors();
+  }, [isAuthenticated, clearErrors]);
 
   const [user, setUser] = useState({
     username: "",
@@ -37,12 +38,16 @@ const Register = (props) => {
     }
   };
   const onChange = (e) => setUser({ ...user, [e.target.name]: e.target.value });
+  if (isAuthenticated) {
+    return <Navigate to={"/profile"} />;
+  }
   return (
     <>
       <Helmet>
         <title>Helper | Register</title>
       </Helmet>
       <Card className={`${classes.auth} card-shadow text-center`}>
+        {error && <Alert severity="error">{error}</Alert>}
         <h3 className="title">Sign Up</h3>
         <h6 className="subtitle">Start helping others or getting help.</h6>
         <form className="form" onSubmit={onSubmit}>
@@ -124,6 +129,7 @@ const Register = (props) => {
 const mapStateToProps = (state) => ({
   isAuthenticated: state.auth.isAuthenticated,
   loading: state.auth.loading,
+  error: state.auth.error,
 });
 
 export default connect(mapStateToProps, { register, clearErrors })(Register);

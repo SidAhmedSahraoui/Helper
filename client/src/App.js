@@ -16,13 +16,12 @@ import Register from "./components/auth/register";
 import Dashboard from "./components/pages/Dashboard";
 
 import './App.css';
-import Alert from "./components/layouts/Alert";
+
 function App() {
   return (
       <Provider store={store}>
       <div className="App">
         <Navbar />
-        <Alert />
           <Routes>
             <Route index element={<Home />} />
             <Route exact path="/login" element={<Login />} />
