@@ -10,6 +10,7 @@ import Profile from '../Profile'
 
 const Dashboard = ({isAuthenticated}) => {
     const classes = useStyles();
+    // make sure user is authenticated
     if (!isAuthenticated) {
         return <Navigate to={"/"} />;
       }
