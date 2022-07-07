@@ -1,14 +1,18 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import Sidbar from '../../layouts/Sidbar';
 import useStyles from './dashboard-jss'
-import { Routes , Route } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
+import { connect } from 'react-redux';
 import Messages from '../Messages';
 import AddPost from '../AddPost';
 import Posts from '../Posts';
 import Profile from '../Profile'
-const Dashboard = () => {
-    const classes = useStyles();
 
+const Dashboard = ({isAuthenticated}) => {
+    const classes = useStyles();
+    if (!isAuthenticated) {
+        return <Navigate to={"/"} />;
+      }
     return(
         <>
             <div className={classes.dash}>
@@ -27,4 +31,8 @@ const Dashboard = () => {
         </>
     )
 }
-export default Dashboard;
+const mapStateToProps = (state) => ({
+    isAuthenticated: state.auth.isAuthenticated,
+  });
+  
+  export default connect(mapStateToProps)(Dashboard);

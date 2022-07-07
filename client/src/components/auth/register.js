@@ -27,13 +27,20 @@ const Register = (props) => {
     password2: "",
   });
 
+  const [err, setErr] = useState('')
+
   const { username, email, phone, password, password2 } = user;
 
   const onSubmit = async (e) => {
     e.preventDefault();
     if (password !== password2) {
-      console.log("Passwords do not match");
+      setErr("Passwords do not match");
+      console.log(err)
+    } else if (password.length<6) {
+      setErr("Password must be at least 6 characters")
+      console.log(err)
     } else {
+      setErr('')
       await register({ username, email, phone, password });
     }
   };
@@ -47,7 +54,7 @@ const Register = (props) => {
         <title>Helper | Register</title>
       </Helmet>
       <Card className={`${classes.auth} card-shadow text-center`}>
-        {error && <Alert severity="error">{error}</Alert>}
+        {(err || error) && <Alert severity="error">{err || error}</Alert>}
         <h3 className="title">Sign Up</h3>
         <h6 className="subtitle">Start helping others or getting help.</h6>
         <form className="form" onSubmit={onSubmit}>

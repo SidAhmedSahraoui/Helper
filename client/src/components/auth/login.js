@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { Helmet } from "react-helmet";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import { Card } from "@mui/material";
 import { connect } from "react-redux";
-import { Navigate } from "react-router";
 import useStyles from "./auth-jss";
+
 // Actions
 import { login, clearErrors } from "../../redux/actions/authActions";
+
 // App layouts
 import Spinner from "../layouts/Spinner";
 import Alert from "../layouts/Alert/Alert";
@@ -15,20 +16,33 @@ const Login = (props) => {
   const { isAuthenticated, loading, error, login, clearErrors } = props;
 
   const classes = useStyles();
+
   useEffect(() => {
     clearErrors();
   }, [isAuthenticated, clearErrors]);
+
   const [user, setUser] = useState({
     username: "",
     password: "",
   });
 
+  const [err, setErr] = useState("");
+
   const { username, password } = user;
+
   const onSubmit = async (e) => {
     e.preventDefault();
-    await login({ username, password });
+    if (password.length < 6) {
+      setErr("Password must be at least 6 characters");
+      console.log(err);
+    } else {
+      setErr('')
+      await login({ username, password });
+    }
   };
+
   const onChange = (e) => setUser({ ...user, [e.target.name]: e.target.value });
+
   if (isAuthenticated) {
     return <Navigate to={"/profile"} />;
   }
@@ -39,7 +53,7 @@ const Login = (props) => {
         <title>Helper | login</title>
       </Helmet>
       <Card className={`${classes.auth} card-shadow text-center`}>
-        {error && <Alert severity="error">{error}</Alert>}
+        {(err || error) && <Alert severity="error">{err || error}</Alert>}
         <h3 className="title">Sign In</h3>
         <h6 className="subtitle">Start helping others or getting help.</h6>
         <form className="form" onSubmit={onSubmit}>
