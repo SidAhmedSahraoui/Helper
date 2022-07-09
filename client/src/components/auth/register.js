@@ -46,7 +46,7 @@ const Register = (props) => {
   };
   const onChange = (e) => setUser({ ...user, [e.target.name]: e.target.value });
   if (isAuthenticated) {
-    return <Navigate to={"/profile"} />;
+    return <Navigate to={"/"} />;
   }
   return (
     <>

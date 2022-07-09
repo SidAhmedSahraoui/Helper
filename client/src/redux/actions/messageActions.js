@@ -2,12 +2,11 @@ import axios from 'axios';
 
 import {
   SEND_MESSAGE,
-  SEND_MESSAGE_ERROR,
-  SET_LOADING_SEND_MESSAGE,
   GET_MESSAGES,
-  MESSAGES_ERROR,
-  SET_LOADING_MESSAGES,
   GET_MESSAGE_BY_ID,
+  MESSAGES_ERROR,
+  SET_LOADING_SEND_MESSAGE,
+  SET_LOADING_MESSAGES,
   CLEAR_ERRORS,
     } from '../types'
 
@@ -15,7 +14,7 @@ import {
 export const getMessages = (username) => async (dispatch) => {
   try {
     dispatch(setLoadingMessages())
-    const res = await axios.get(`/messages/${username}`);
+    const res = await axios.get(`/api/messages/${username}`);
 
     dispatch({ type: GET_MESSAGES, payload: res.data });
   } catch (error) {
@@ -31,7 +30,7 @@ export const getMessages = (username) => async (dispatch) => {
 export const getMessageById = (id) => async (dispatch) => {
   try {
     dispatch(setLoadingMessages())
-    const res = await axios.get(`/messages/find/${id}`);
+    const res = await axios.get(`/api/messages/find/${id}`);
 
     dispatch({ type: GET_MESSAGE_BY_ID, payload: res.data });
   } catch (error) {
@@ -53,13 +52,13 @@ export const sendMessage = (formData) => async (dispatch) => {
 
   try {
     dispatch(setLoadinSendMessages())
-    const res = await axios.post('/messages', formData, config);
+    const res = await axios.post('/api/messages', formData, config);
 
     dispatch({ type: SEND_MESSAGE, payload: res.data });
   } catch (error) {
     console.log(error);
     dispatch({
-      type: SEND_MESSAGE_ERROR,
+      type: MESSAGES_ERROR,
       payload: error.response?.data?.msg || 'Error',
     });
   }

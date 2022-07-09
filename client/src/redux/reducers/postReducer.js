@@ -1,6 +1,5 @@
 import {
   ADD_POST,
-  ADD_POST_ERROR,
   GET_POSTS,
   GET_POST_BY_ID,
   POSTS_ERROR,
@@ -8,10 +7,8 @@ import {
   SET_LOADING_POSTS,
   GET_USER_POSTS,
   GET_USER_POST_BY_ID,
-  USER_POSTS_ERROR,
   SET_LOADING_USER_POSTS,
   DELETE_POST,
-  DELETE_POST_ERROR,
   SET_LOADING_DELETE_POST,
   CLEAR_ERRORS,
 } from "../types";
@@ -23,7 +20,7 @@ const initialState = {
   user_post: null,
   loading: false,
   loading_add_post: false,
-  loading_delete_post: null,
+  loading_delete_post: false,
   loading_user_posts: false,
   error: null,
 };
@@ -64,25 +61,16 @@ export default (state = initialState, action) => {
         loading_user_posts: false,
       };
 
-    case ADD_POST_ERROR:
+    case DELETE_POST:
       return {
         ...state,
-        loading_add_post: false,
-        error: action.payload,
+        loading_delete_post: false,
+        error: null,
       };
 
-    case POSTS_ERROR:
+    case SET_LOADING_DELETE_POST:
       return {
-        ...state,
-        loading: false,
-        error: action.payload,
-      };
-
-    case USER_POSTS_ERROR:
-      return {
-        ...state,
-        loading_user_posts: false,
-        error: action.payload,
+        loading_delete_post: true,
       };
 
     case SET_LOADING_ADD_POST:
@@ -90,39 +78,33 @@ export default (state = initialState, action) => {
         ...state,
         loading_add_post: true,
       };
+
     case SET_LOADING_POSTS:
       return {
         ...state,
         loading: true,
       };
+
     case SET_LOADING_USER_POSTS:
       return {
         ...state,
         loading_user_posts: true,
       };
-    case DELETE_POST:
+
+    case POSTS_ERROR:
       return {
         ...state,
-        user_posts: action.payload,
+        loading: false,
+        loading_add_post: false,
+        loading_user_posts: false,
         loading_delete_post: false,
-        error: null,
-      };
-    case DELETE_POST_ERROR:
-      return {
-        ...state,
         error: action.payload,
-        loading_delete_post: false,
-      };
-    case SET_LOADING_DELETE_POST:
-      return {
-        loading_delete_post: true,
       };
 
     case CLEAR_ERRORS:
       return {
         ...state,
         error: null,
-        error_pending_posts: null,
       };
 
     default:
