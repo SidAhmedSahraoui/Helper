@@ -83,8 +83,6 @@ router.post(
   }
 );
 
-
-
 //  @route       DELETE api/posts/:id
 //  @desc        Delete post
 //  @access      Private

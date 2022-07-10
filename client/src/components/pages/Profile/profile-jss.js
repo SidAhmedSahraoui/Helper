@@ -1,4 +1,5 @@
 import { createUseStyles } from "react-jss";
+import colors from "../../styling/colors";
 import { BUTTON_PRIMARY_OUTLINE, INPUT_TEXT } from "../../styling/styling";
 
 const useStyles = createUseStyles({
@@ -6,12 +7,25 @@ const useStyles = createUseStyles({
     '& .user': {
         padding: '12px 16px',
         '& .welcome': {
+            color: colors["text-gray-700"],
             fontSize: '24px',
-            fontWeight: '600'
+            fontWeight: '400'
         },
         '& .email': {
-            fontSize: '22px',
-            fontWeight: '600'
+            display: 'flex',
+            flexWrap: 'wrap',
+            justifyContent: 'flex-start',
+            alignItems: 'center',
+            color: colors["text-gray-600"],
+            fontSize: '18px',
+            fontWeight: '400',
+            '& .element': {
+                margin: '24px'
+            }
+        },
+        '& .alert-container': {
+            width: '80%',
+            margin: '18px auto'
         },
         '& .edit': {
             display: 'flex',

@@ -5,10 +5,12 @@ import {
   REGISTER_SUCCESS,
   USER_LOADED,
   LOGIN_SUCCESS,
+  UPDATE_PASSWORD,
+  UPDATE_PROFILE,
   LOGOUT,
   AUTH_ERROR,
   CLEAR_ERRORS,
-  UPDATE_PASSWORD,
+
 } from "../types";
 
 import setAuthToken from "../../utils/setAuthToken";
@@ -106,17 +108,40 @@ export const updatePassword = (formData) => async (dispatch) => {
 
   try {
     dispatch(setLoading());
-    const res = await axios.put("/auth", formData, config);
+    const res = await axios.put("/api/auth", formData, config);
 
     dispatch({ type: UPDATE_PASSWORD, payload: res.data });
   } catch (error) {
     console.log(error);
     dispatch({
       type: AUTH_ERROR,
-      payload: error.response?.data?.msg,
+      payload: error.response?.data,
     });
   }
 };
+
+// Update profile
+export const updateProfile = (formData) => async (dispatch) => {
+  const config = {
+    headers: {
+      "Content-Type": "application/json",
+    },
+  };
+
+  try {
+    dispatch(setLoading());
+    const res = await axios.put("/api/auth/edit", formData, config);
+
+    dispatch({ type: UPDATE_PROFILE, payload: res.data });
+  } catch (error) {
+    console.log(error);
+    dispatch({
+      type: AUTH_ERROR,
+      payload: error.response?.data,
+    });
+  }
+};
+
 // Logout
 export const logout = () => async (dispatch) => {
   dispatch({
