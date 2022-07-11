@@ -19,7 +19,7 @@ const PostSchema = mongoose.Schema({
   },
   willaya: {
     type: String,
-    required: true,
+    required: false,
   },
   phone: {
     type: Number,

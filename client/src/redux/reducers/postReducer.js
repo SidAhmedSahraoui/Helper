@@ -1,14 +1,17 @@
 import {
-  ADD_POST,
+  ADD_POST ,
+  ADD_POST_ERROR,
   GET_POSTS,
-  GET_POST_BY_ID,
-  POSTS_ERROR,
+  GET_POST_BY_ID ,
+  POSTS_ERROR ,
   SET_LOADING_ADD_POST,
   SET_LOADING_POSTS,
-  GET_USER_POSTS,
+  GET_USER_POSTS ,
   GET_USER_POST_BY_ID,
+  USER_POSTS_ERROR ,
   SET_LOADING_USER_POSTS,
-  DELETE_POST,
+  DELETE_POST ,
+  DELETE_POST_ERROR,
   SET_LOADING_DELETE_POST,
   CLEAR_ERRORS,
 } from "../types";
@@ -30,7 +33,9 @@ export default (state = initialState, action) => {
     case ADD_POST:
       return {
         ...state,
+        ...action.payload,
         loading_add_post: false,
+       
       };
 
     case GET_POSTS:
@@ -92,6 +97,9 @@ export default (state = initialState, action) => {
       };
 
     case POSTS_ERROR:
+    case USER_POSTS_ERROR:
+    case ADD_POST_ERROR:
+    case DELETE_POST_ERROR:
       return {
         ...state,
         loading: false,

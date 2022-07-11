@@ -12,7 +12,7 @@ import {
 
 const Post = (props) => {
   const classes = useStyles();
-  const { title, content, category } = props;
+  const { title, content, category, city } = props;
 
   return (
     <div className={classes.post}>
@@ -31,7 +31,7 @@ const Post = (props) => {
         />
       </div>
       <div className="position">
-      <FontAwesomeIcon icon={faLocationDot}/> Relizane
+      <FontAwesomeIcon icon={faLocationDot}/> {city}
       </div>
       <div className="core">
         <p className="content">{content}</p>

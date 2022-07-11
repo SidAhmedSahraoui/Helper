@@ -96,7 +96,7 @@ router.post(
     }
 
     const { username, email, phone, password } = req.body;
-
+    console.log(req.body)
     try {
       let user = await User.findOne({
         $or: [{ email: email }, { username: username }],

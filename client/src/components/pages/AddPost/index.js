@@ -5,38 +5,43 @@ import { Container } from "@mui/material";
 
 // Actions
 import { loadUser } from "../../../redux/actions/authActions";
+import { addPost } from "../../../redux/actions/postActions";
 // Layouts
 import Alert from "../../layouts/Alert/Alert";
 
 const AddPost = (props) => {
-  const { user, isAuthenticated, loading, loadUser } = props;
+  const { user, loadUser, error, loading_add_post, addPost } = props;
 
   const classes = useStyles();
 
   const [post, setPost] = useState({
     title: "",
-    description: "",
+    content: "",
     category: "Medical",
   });
 
-  const { title, description, category } = post;
+  const { title, content, category } = post;
 
   const [err, setErr] = useState({
     type: "",
     msg: "",
   });
 
+  const  user_id  = user._id
+  const willaya = user.willaya
+  const phone = user.phone
   const onChange = (e) => setPost({ ...post, [e.target.name]: e.target.value });
 
-  const onSubmit = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
-    if (title === "" || description === "") {
+    if (title === "" || content === "") {
       setErr({
         msg: "Please fill out all fields",
         type: "success",
       });
     } else {
-      
+      console.log(user._id)
+      await addPost({user_id, title, content, category, willaya, phone})
     }
   };
 
@@ -68,10 +73,10 @@ const AddPost = (props) => {
         </div>
         <div className="from-group">
           <textarea
-            name="description"
+            name="content"
             className="text-input"
             placeholder="Description"
-            value={description}
+            value={content}
             onChange={onChange}
           />
         </div>
@@ -95,7 +100,7 @@ const AddPost = (props) => {
 };
 const mapStateToProps = (state) => ({
   user: state.auth.user,
-  isAthenticated: state.auth.isAthenticated,
-  loading: state.auth.loading,
+  error: state.post.error,
+  loading_add_post: state.post.loading_add_post,
 });
-export default connect(mapStateToProps, { loadUser })(AddPost);
+export default connect(mapStateToProps, { loadUser, addPost })(AddPost);

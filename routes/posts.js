@@ -9,7 +9,7 @@ const Post = require("../models/Post");
 //  @route       GET api/posts
 //  @desc        Get all posts
 //  @access      Private
-router.get("/", auth, async (req, res) => {
+router.get("/", async (req, res) => {
   try {
     const posts = await Post.find().sort({
       date: -1,
@@ -24,7 +24,7 @@ router.get("/", auth, async (req, res) => {
 //  @route       GET api/posts/user
 //  @desc        Get user posts
 //  @access      Private
-router.get("/user", auth, async (req, res) => {
+router.get("/user", async (req, res) => {
   try {
     const user = await User.find({username: req.user.id})
 
@@ -45,23 +45,11 @@ router.get("/user", auth, async (req, res) => {
 //  @access      Public
 router.post(
   "/",
-  [
-    check("user_id", "UserId is required").not().isEmpty(),
-    check("title", "Post title is required").not().isEmpty(),
-    check("category", "Post category is required").not().isEmpty(),
-    check("content", "Post content is required").not().isEmpty(),
-  ],
   async (req, res) => {
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-      return res.status(400).json(errors.array());
-    }
-
     try {
-      const { user_id, title, category, willaya, content } = req.body;
+      const { user_id, title, content, category, willaya, phone } = req.body;
 
       let user = await User.find({ _id: user_id });
-
       if (!user || !user.length) {
         return res.status(404).json([{ msg: "User not exists" }]);
       }
@@ -69,9 +57,10 @@ router.post(
       const newPost = new Post({
         user: user_id,
         title,
+        content,
         category,
         willaya,
-        content,
+        phone
       });
 
       const post = await newPost.save();
@@ -82,11 +71,12 @@ router.post(
     }
   }
 );
+        
 
 //  @route       DELETE api/posts/:id
 //  @desc        Delete post
 //  @access      Private
-router.delete("/:id", auth, async (req, res) => {
+router.delete("/:id", async (req, res) => {
   try {
     let post = await Post.findById(req.params.id);
 
@@ -94,12 +84,12 @@ router.delete("/:id", auth, async (req, res) => {
 
     // Make sure user owns post
     if (post.user.toString() !== req.user.id) {
-      return res.status(401).json([{ msg: "Not authorized" }]);
+      return res.status(401).json("Not authorized");
     }
 
     await Post.findByIdAndRemove(req.params.id);
 
-    res.json({ msg: "Post removed" });
+    res.json("Post removed");
   } catch (error) {
     console.error(error.message);
     res.status(500).send("Server Error");
