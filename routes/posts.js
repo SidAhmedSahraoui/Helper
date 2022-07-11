@@ -1,7 +1,6 @@
 const express = require("express");
 const router = express.Router();
 const auth = require("../middleware/auth");
-const { check, validationResult } = require("express-validator");
 
 const User = require("../models/User");
 const Post = require("../models/Post");
@@ -24,10 +23,9 @@ router.get("/", async (req, res) => {
 //  @route       GET api/posts/user
 //  @desc        Get user posts
 //  @access      Private
-router.get("/user", async (req, res) => {
+router.get("/user", auth, async (req, res) => {
   try {
-    const user = await User.find({username: req.user.id})
-
+    const user = await User.findOne({_id: req.user.id})
     const posts = await Post.find({
       user: user._id,
     }).sort({
@@ -51,7 +49,7 @@ router.post(
 
       let user = await User.find({ _id: user_id });
       if (!user || !user.length) {
-        return res.status(404).json([{ msg: "User not exists" }]);
+        return res.status(404).json("User not exists");
       }
 
       const newPost = new Post({
@@ -80,7 +78,7 @@ router.delete("/:id", async (req, res) => {
   try {
     let post = await Post.findById(req.params.id);
 
-    if (!post) return res.status(404).json([{ msg: "Post not found" }]);
+    if (!post) return res.status(404).json("Post not found");
 
     // Make sure user owns post
     if (post.user.toString() !== req.user.id) {

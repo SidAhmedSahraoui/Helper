@@ -3,17 +3,18 @@ import useStyles from "./posts-jss";
 import Post from "../../layouts/PostCard";
 import { v4 as uuid } from "uuid";
 import { connect } from "react-redux";
-import { getPosts } from "../../../redux/actions/postActions";
+// Actions
+import { getUserPosts } from "../../../redux/actions/postActions";
 // Layouts
 import NotFound from "../404";
 
 const Posts = (props) => {
-  const { posts, error, loading, getPosts } = props;
+  const { posts, loading, getUserPosts } = props;
 
   const classes = useStyles();
 
   useEffect(() => {
-    getPosts();
+    getUserPosts();
     // eslint-disable-next-line
   }, []);
 
@@ -39,8 +40,7 @@ const Posts = (props) => {
   );
 };
 const mapStateToProps = (state) => ({
-  posts: state.post.posts,
+  posts: state.post.user_posts,
   loading: state.post.loading,
-  error: state.post.error,
 });
-export default connect(mapStateToProps, { getPosts })(Posts);
+export default connect(mapStateToProps, { getUserPosts })(Posts);

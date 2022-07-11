@@ -18,6 +18,8 @@ import {
   CLEAR_ERRORS,
 } from "../types";
 
+import setAuthToken from "../../utils/setAuthToken";
+
 // Add Post
 export const addPost = (formData) => async (dispatch) => {
   const config = {
@@ -38,7 +40,7 @@ export const addPost = (formData) => async (dispatch) => {
 
   } catch (error) {
     dispatch({
-      type: POSTS_ERROR,
+      type: ADD_POST_ERROR,
       payload: error.response?.data,
     });
   }
@@ -77,17 +79,26 @@ export const getPostById = (id) => async (dispatch) => {
 };
 
 // Get User Posts
-export const getUserPosts = (username) => async (dispatch) => {
+export const getUserPosts = () => async (dispatch) => {
+  if (localStorage.token) {
+    setAuthToken(localStorage.token);
+
+  } else {
+    dispatch({
+      type: POSTS_ERROR,
+    });
+    return;
+  }
   try {
     dispatch(setLoadingUserPosts());
-    const res = await axios.get(`/posts/user/${username}`);
+    const res = await axios.get("/api/posts/user");
 
     dispatch({ type: GET_USER_POSTS, payload: res.data });
   } catch (error) {
     console.log(error);
     dispatch({
       type: USER_POSTS_ERROR,
-      payload: error.response?.data || "Error",
+      payload: error.response?.data,
     });
   }
 };

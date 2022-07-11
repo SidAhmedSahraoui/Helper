@@ -2,11 +2,19 @@ import { createUseStyles } from 'react-jss';
 import colors from '../../styling/colors';
 
 const useStyles = createUseStyles({
+  postsContainer: {
+    padding: '40px 20px',
+    margin: 'auto',
+    backgroundColor: colors['text-gray-300'],
+    display: 'flex',
+    flexWrap: 'wrap',
+  },
   page: {
     padding: '40px 20px',
     marginBottom: '40px',
     width:'80%',
     margin: 'auto',
+    
     '& h1.title': {
       color: colors['text-gray-900'],
       fontWeight: '700',
