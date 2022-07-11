@@ -69,29 +69,22 @@ router.post(
     }
   }
 );
-        
 
-//  @route       DELETE api/posts/:id
-//  @desc        Delete post
-//  @access      Private
-router.delete("/:id", async (req, res) => {
+//  @route       GET api/posts/:id
+//  @desc        Get Post by Id
+//  @access      Public
+router.get("/:id", async (req, res) => {
   try {
     let post = await Post.findById(req.params.id);
 
     if (!post) return res.status(404).json("Post not found");
 
-    // Make sure user owns post
-    if (post.user.toString() !== req.user.id) {
-      return res.status(401).json("Not authorized");
-    }
+    res.json(post)
 
-    await Post.findByIdAndRemove(req.params.id);
-
-    res.json("Post removed");
   } catch (error) {
     console.error(error.message);
     res.status(500).send("Server Error");
   }
 });
-
+      
 module.exports = router;

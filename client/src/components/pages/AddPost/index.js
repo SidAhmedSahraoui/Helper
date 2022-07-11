@@ -8,6 +8,7 @@ import { loadUser } from "../../../redux/actions/authActions";
 import { addPost } from "../../../redux/actions/postActions";
 // Layouts
 import Alert from "../../layouts/Alert/Alert";
+import Spinner from "../../layouts/Spinner";
 
 const AddPost = (props) => {
   const { user, loadUser, error, loading_add_post, addPost } = props;
@@ -27,9 +28,9 @@ const AddPost = (props) => {
     msg: "",
   });
 
-  const  user_id  = user._id
-  const willaya = user.willaya
-  const phone = user.phone
+  const user_id = user._id;
+  const willaya = user.willaya;
+  const phone = user.phone;
   const onChange = (e) => setPost({ ...post, [e.target.name]: e.target.value });
 
   const onSubmit = async (e) => {
@@ -37,11 +38,11 @@ const AddPost = (props) => {
     if (title === "" || content === "") {
       setErr({
         msg: "Please fill out all fields",
-        type: "success",
+        type: "danger",
       });
     } else {
-      console.log(user._id)
-      await addPost({user_id, title, content, category, willaya, phone})
+      setErr({ msg: "Post uploaded", type: "success" });
+      await addPost({ user_id, title, content, category, willaya, phone });
     }
   };
 
@@ -52,16 +53,16 @@ const AddPost = (props) => {
 
   return (
     <div className={classes.AddPost}>
+      {err.msg === "" ? null : (
+        <Container style={{ marginBottom: "12px" }}>
+          <Alert type={err.type} severity="error">
+            {err.msg}
+          </Alert>
+        </Container>
+      )}
       <form className="form" onSubmit={onSubmit}>
         <h3 className="title">Add a new help request</h3>
         <div className="from-group">
-        <Container className="alert-container">
-            {err.msg === "" ? null : (
-              <Alert type={err.type} severity="error">
-                {err.msg}
-              </Alert>
-            )}
-          </Container>
           <input
             type="text"
             name="title"
@@ -92,7 +93,11 @@ const AddPost = (props) => {
           </select>
         </div>
         <div className="from-group">
-          <input type="submit" value="Add Request" className="button-outline" />
+          {loading_add_post ? (
+            <Spinner />
+          ) : (
+            <input className="button" type="submit" value="Submit" />
+          )}
         </div>
       </form>
     </div>

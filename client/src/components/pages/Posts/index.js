@@ -27,7 +27,7 @@ const Posts = (props) => {
           posts.map((post) => (
             <Post
               key={uuid()}
-              id={post.id}
+              id={post._id}
               title={post.title}
               content={post.content}
               category={post.category}

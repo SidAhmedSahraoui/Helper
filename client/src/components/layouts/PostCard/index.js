@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import useStyles from "./Post-jss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -12,7 +13,7 @@ import {
 
 const Post = (props) => {
   const classes = useStyles();
-  const { title, content, category, city } = props;
+  const { id, title, content, category, city, presentation } = props;
 
   return (
     <div className={classes.post}>
@@ -36,16 +37,16 @@ const Post = (props) => {
       <div className="core">
         <p className="content">{content}</p>
       </div>
-      <div className="contact">
+      { presentation ? null :<div className="contact">
         <div className="call">
           <h3>Call</h3>
           <FontAwesomeIcon className="icon" icon={faPhone} size='lg' />
         </div>
-        <div className="call msg">
+        <Link to={`/${id}`} className="call msg">
           <h3>Message</h3>
           <FontAwesomeIcon className="icon" icon={faPaperPlane} size='lg' />
-        </div>
-      </div>
+        </Link>
+      </div>}
     </div>
   );
 };

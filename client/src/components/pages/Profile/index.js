@@ -51,7 +51,7 @@ const Profile = (props) => {
   const onSubmit_settings = async (e) => {
     e.preventDefault();
     if (name === "" || phone === "") {
-      setErr({ msg: "Please fill out the form", type: "success" });
+      setErr({ msg: "Please fill out all fields", type: "danger" });
     } else {
       setErr({ msg: "Profile updated", type: "success" });
       await updateProfile({ name, phone, willaya });
@@ -62,10 +62,10 @@ const Profile = (props) => {
     if (old_password.length < 6 || new_password.length < 6) {
       setErr({
         msg: "Password must be at least 6 characters",
-        type: "success",
+        type: "danger",
       });
     } else if (old_password === new_password) {
-      setErr({ msg: "Passwords looks the same!", type: "success" });
+      setErr({ msg: "Passwords looks the same!", type: "danger" });
     } else {
       setErr({ msg: "Password updated", type: "success" });
       await updatePassword({ old_password, new_password });
@@ -104,7 +104,7 @@ const Profile = (props) => {
             )}
           </Container>
           <div className="edit">
-            <Card>
+            <Card style={{ padding: "1rem" }}>
               <CardContent>
                 <Typography variant="h5" style={{ marginBottom: "24px" }}>
                   Edit your settings
@@ -118,7 +118,6 @@ const Profile = (props) => {
                     onChange={onChange}
                     value={name}
                   />
-
                   <input
                     className="text-input"
                     placeholder="Phone"
@@ -127,7 +126,6 @@ const Profile = (props) => {
                     onChange={onChange}
                     value={phone}
                   />
-
                   <select
                     className="select"
                     name="willaya"
@@ -164,7 +162,7 @@ const Profile = (props) => {
                 </form>
               </CardContent>
             </Card>
-            <Card style={{ maxWidth: "500px", padding: "1rem" }}>
+            <Card style={{ padding: "1rem" }}>
               <CardContent>
                 <Typography variant="h5" style={{ marginBottom: "24px" }}>
                   Edit your password

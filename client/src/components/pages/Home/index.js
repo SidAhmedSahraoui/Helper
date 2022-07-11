@@ -15,6 +15,7 @@ import { getPosts } from "../../../redux/actions/postActions";
 
 // Layouts
 import NotFound from "../404";
+import Spinner from "../../layouts/Spinner";
 import Post from "../../layouts/PostCard";
 
 const Home = (props) => {
@@ -31,13 +32,15 @@ const Home = (props) => {
       </Helmet>
       {isAuthenticated ? (
         <div className={`${classes.postsContainer}`}>
-          {posts === null || posts.length === 0 || loading ? (
+          {loading ? (
+            <Spinner />
+          ) : posts === null || posts.length === 0 ? (
             <NotFound />
           ) : (
             posts.map((post) => (
               <Post
                 key={uuid()}
-                id={post.id}
+                id={post._id}
                 title={post.title}
                 content={post.content}
                 category={post.category}

@@ -14,6 +14,7 @@ import Home from "./components/pages/Home";
 import Login from "./components/auth/login";
 import Register from "./components/auth/register";
 import Dashboard from "./components/pages/Dashboard";
+import PostShow from "./components/pages/PostShow";
 
 import './App.css';
 import NotFound from "./components/pages/404";
@@ -28,6 +29,7 @@ function App() {
             <Route exact path="/login" element={<Login />} />
             <Route exact path="/register" element={<Register />} />
             <Route exact path="/profile/*" element={<Dashboard />} />
+            <Route exact path="/:id" element={<PostShow />} />
             <Route path="/*" element={<NotFound />} />
           </Routes>
         <Footer />

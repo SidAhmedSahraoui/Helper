@@ -7,12 +7,8 @@ import {
   SET_LOADING_ADD_POST,
   SET_LOADING_POSTS,
   GET_USER_POSTS ,
-  GET_USER_POST_BY_ID,
   USER_POSTS_ERROR ,
   SET_LOADING_USER_POSTS,
-  DELETE_POST ,
-  DELETE_POST_ERROR,
-  SET_LOADING_DELETE_POST,
   CLEAR_ERRORS,
 } from "../types";
 
@@ -23,7 +19,6 @@ const initialState = {
   user_post: null,
   loading: false,
   loading_add_post: false,
-  loading_delete_post: false,
   loading_user_posts: false,
   error: null,
 };
@@ -59,25 +54,6 @@ export default (state = initialState, action) => {
         loading_user_posts: false,
       };
 
-    case GET_USER_POST_BY_ID:
-      return {
-        ...state,
-        user_post: action.payload,
-        loading_user_posts: false,
-      };
-
-    case DELETE_POST:
-      return {
-        ...state,
-        loading_delete_post: false,
-        error: null,
-      };
-
-    case SET_LOADING_DELETE_POST:
-      return {
-        loading_delete_post: true,
-      };
-
     case SET_LOADING_ADD_POST:
       return {
         ...state,
@@ -99,13 +75,11 @@ export default (state = initialState, action) => {
     case POSTS_ERROR:
     case USER_POSTS_ERROR:
     case ADD_POST_ERROR:
-    case DELETE_POST_ERROR:
       return {
         ...state,
         loading: false,
         loading_add_post: false,
         loading_user_posts: false,
-        loading_delete_post: false,
         error: action.payload,
       };
 

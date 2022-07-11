@@ -9,7 +9,6 @@ const useStyles = createUseStyles({
         boxShadow: "0px 12px 24px rgb(109,184,241, 0.16)",
         backgroundColor:'#fff',
         height: '210px',
-        cursor: 'pointer',
         '@media screen and (max-width: 550px)': {
             width: '80%'                
         },
@@ -80,7 +79,8 @@ const useStyles = createUseStyles({
                   },
             },
             '& .msg': {
-                width: '45%'
+                width: '45%',
+                textDecoration: 'none'
             }
         }
     }

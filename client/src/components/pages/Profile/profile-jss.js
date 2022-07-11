@@ -9,7 +9,8 @@ const useStyles = createUseStyles({
         '& .welcome': {
             color: colors["text-gray-700"],
             fontSize: '24px',
-            fontWeight: '400'
+            fontWeight: '400',
+            paddingLeft: '26px',
         },
         '& .email': {
             display: 'flex',
