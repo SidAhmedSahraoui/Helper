@@ -33,7 +33,6 @@ export const addPost = (formData) => async (dispatch) => {
       type: ADD_POST,
       payload: res.data,
     });
-
   } catch (error) {
     dispatch({
       type: ADD_POST_ERROR,
@@ -52,7 +51,7 @@ export const getPosts = () => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: POSTS_ERROR,
-      payload: error.response?.data || "Error",
+      payload: error.response?.data,
     });
   }
 };
@@ -67,7 +66,7 @@ export const getPostById = (id) => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: POSTS_ERROR,
-      payload: error.response?.data ,
+      payload: error.response?.data,
     });
   }
 };
@@ -76,7 +75,6 @@ export const getPostById = (id) => async (dispatch) => {
 export const getUserPosts = () => async (dispatch) => {
   if (localStorage.token) {
     setAuthToken(localStorage.token);
-
   } else {
     dispatch({
       type: POSTS_ERROR,

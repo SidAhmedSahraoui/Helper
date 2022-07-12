@@ -86,13 +86,13 @@ const Profile = (props) => {
           </h3>
           <h5 className="email">
             {" "}
-            <div className="element" >
+            <div className="element">
               <FontAwesomeIcon icon={faEnvelopeCircleCheck} /> {user.email}{" "}
             </div>
-            <div className="element" >
+            <div className="element">
               <FontAwesomeIcon icon={faPhone} /> {user.phone}{" "}
             </div>
-            <div className="element" >
+            <div className="element">
               <FontAwesomeIcon icon={faLocationDot} /> {user.willaya}{" "}
             </div>
           </h5>

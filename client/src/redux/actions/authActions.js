@@ -10,7 +10,6 @@ import {
   LOGOUT,
   AUTH_ERROR,
   CLEAR_ERRORS,
-
 } from "../types";
 
 import setAuthToken from "../../utils/setAuthToken";
@@ -19,14 +18,13 @@ import setAuthToken from "../../utils/setAuthToken";
 export const loadUser = () => async (dispatch) => {
   if (localStorage.token) {
     setAuthToken(localStorage.token);
-
   } else {
     dispatch({
       type: AUTH_ERROR,
     });
     return;
   }
-    dispatch(setLoading());
+  dispatch(setLoading());
 
   try {
     const res = await axios.get("/api/auth");
@@ -41,7 +39,6 @@ export const loadUser = () => async (dispatch) => {
     });
   }
 };
-
 
 // Register User
 export const register = (formData) => async (dispatch) => {

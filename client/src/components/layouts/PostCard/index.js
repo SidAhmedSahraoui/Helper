@@ -8,7 +8,7 @@ import {
   faUserDoctor,
   faPhone,
   faPaperPlane,
-  faLocationDot
+  faLocationDot,
 } from "@fortawesome/free-solid-svg-icons";
 
 const Post = (props) => {
@@ -32,21 +32,23 @@ const Post = (props) => {
         />
       </div>
       <div className="position">
-      <FontAwesomeIcon icon={faLocationDot}/> {city}
+        <FontAwesomeIcon icon={faLocationDot} /> {city}
       </div>
       <div className="core">
         <p className="content">{content}</p>
       </div>
-      { presentation ? null :<div className="contact">
-        <div className="call">
-          <h3>Call</h3>
-          <FontAwesomeIcon className="icon" icon={faPhone} size='lg' />
+      {presentation ? null : (
+        <div className="contact">
+          <div className="call">
+            <h3>Call</h3>
+            <FontAwesomeIcon className="icon" icon={faPhone} size="lg" />
+          </div>
+          <Link to={`/${id}`} className="call msg">
+            <h3>Message</h3>
+            <FontAwesomeIcon className="icon" icon={faPaperPlane} size="lg" />
+          </Link>
         </div>
-        <Link to={`/${id}`} className="call msg">
-          <h3>Message</h3>
-          <FontAwesomeIcon className="icon" icon={faPaperPlane} size='lg' />
-        </Link>
-      </div>}
+      )}
     </div>
   );
 };

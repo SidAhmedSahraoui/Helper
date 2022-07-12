@@ -3,8 +3,10 @@ import useStyles from "./posts-jss";
 import Post from "../../layouts/PostCard";
 import { v4 as uuid } from "uuid";
 import { connect } from "react-redux";
+
 // Actions
 import { getUserPosts } from "../../../redux/actions/postActions";
+
 // Layouts
 import NotFound from "../404";
 
@@ -21,7 +23,7 @@ const Posts = (props) => {
   return (
     <>
       <div className={classes.posts}>
-        {(posts === null || posts.length === 0 || loading) ? (
+        {posts === null || posts.length === 0 || loading ? (
           <NotFound />
         ) : (
           posts.map((post) => (

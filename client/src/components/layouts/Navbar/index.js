@@ -1,22 +1,17 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import useStyles from './navbar-jss';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom'
 // Actions
-import { logout, loadUser } from '../../../redux/actions/authActions';
+import { logout } from '../../../redux/actions/authActions';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faSignOutAlt,faUserAlt
 } from '@fortawesome/free-solid-svg-icons';
 const Navbar = (props) => {
     const classes = useStyles();
-    const { isAuthenticated, user, logout, loadUser } = props;
-    useEffect(() => {
-      if (isAuthenticated) {
-        loadUser()
-      }
-      // eslint-disable-next-line
-    }, [isAuthenticated])
+    const { isAuthenticated, user, logout } = props;
+    
     const onLogOut = () => {
       logout()
     }
@@ -39,7 +34,7 @@ const Navbar = (props) => {
     const guestMenu = (
       <>
           <div className='links'>
-            <Link to='/register' className='button-primary'> Register </Link>
+            <Link to='/login' className='button-primary'> Login </Link>
           </div>
       </>
     )
@@ -61,4 +56,4 @@ const mapStateToProps = (state) => ({
   user: state.auth.user,
 });
 
-export default connect(mapStateToProps, { logout, loadUser })(Navbar);
+export default connect(mapStateToProps, { logout })(Navbar);

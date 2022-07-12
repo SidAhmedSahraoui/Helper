@@ -5,8 +5,11 @@ import { Card } from "@mui/material";
 import { connect } from "react-redux";
 import { Navigate } from "react-router";
 import useStyles from "./auth-jss";
+
 // Actions
 import { register, clearErrors } from "../../redux/actions/authActions";
+
+// Layouts
 import Spinner from "../layouts/Spinner";
 import Alert from "../layouts/Alert/Alert";
 
@@ -27,7 +30,7 @@ const Register = (props) => {
     password2: "",
   });
 
-  const [err, setErr] = useState('')
+  const [err, setErr] = useState("");
 
   const { username, email, phone, password, password2 } = user;
 
@@ -35,10 +38,10 @@ const Register = (props) => {
     e.preventDefault();
     if (password !== password2) {
       setErr("Passwords do not match");
-    } else if ( password.length < 6 ) {
-      setErr("Password must be at least 6 characters")
+    } else if (password.length < 6) {
+      setErr("Password must be at least 6 characters");
     } else {
-      setErr('')
+      setErr("");
       await register({ username, email, phone, password });
     }
   };

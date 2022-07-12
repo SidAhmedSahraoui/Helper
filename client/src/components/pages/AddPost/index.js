@@ -6,12 +6,13 @@ import { Container } from "@mui/material";
 // Actions
 import { loadUser } from "../../../redux/actions/authActions";
 import { addPost } from "../../../redux/actions/postActions";
+
 // Layouts
 import Alert from "../../layouts/Alert/Alert";
 import Spinner from "../../layouts/Spinner";
 
 const AddPost = (props) => {
-  const { user, loadUser, error, loading_add_post, addPost } = props;
+  const { user, loadUser, loading_add_post, addPost } = props;
 
   const classes = useStyles();
 
@@ -105,7 +106,6 @@ const AddPost = (props) => {
 };
 const mapStateToProps = (state) => ({
   user: state.auth.user,
-  error: state.post.error,
   loading_add_post: state.post.loading_add_post,
 });
 export default connect(mapStateToProps, { loadUser, addPost })(AddPost);

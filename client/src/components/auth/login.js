@@ -35,7 +35,7 @@ const Login = (props) => {
     if (password.length < 6) {
       setErr("Password must be at least 6 characters");
     } else {
-      setErr('')
+      setErr("");
       await login({ username, password });
     }
   };

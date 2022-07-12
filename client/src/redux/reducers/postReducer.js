@@ -1,13 +1,13 @@
 import {
-  ADD_POST ,
+  ADD_POST,
   ADD_POST_ERROR,
   GET_POSTS,
-  GET_POST_BY_ID ,
-  POSTS_ERROR ,
+  GET_POST_BY_ID,
+  POSTS_ERROR,
   SET_LOADING_ADD_POST,
   SET_LOADING_POSTS,
-  GET_USER_POSTS ,
-  USER_POSTS_ERROR ,
+  GET_USER_POSTS,
+  USER_POSTS_ERROR,
   SET_LOADING_USER_POSTS,
   CLEAR_ERRORS,
 } from "../types";
@@ -30,7 +30,6 @@ export default (state = initialState, action) => {
         ...state,
         ...action.payload,
         loading_add_post: false,
-       
       };
 
     case GET_POSTS:
