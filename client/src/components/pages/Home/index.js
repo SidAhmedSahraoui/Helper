@@ -10,6 +10,7 @@ import { v4 as uuid } from "uuid";
 import useStyles from "./home-jss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { connect } from "react-redux";
+
 // Actions
 import { getPosts } from "../../../redux/actions/postActions";
 

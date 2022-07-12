@@ -1,43 +1,35 @@
-import axios from 'axios';
+import axios from "axios";
 
 import {
   SEND_MESSAGE,
   GET_MESSAGES,
-  GET_MESSAGE_BY_ID,
   MESSAGES_ERROR,
   SET_LOADING_SEND_MESSAGE,
   SET_LOADING_MESSAGES,
   CLEAR_ERRORS,
-    } from '../types'
+} from "../types";
+
+import setAuthToken from "../../utils/setAuthToken";
 
 // Get messages
-export const getMessages = (username) => async (dispatch) => {
+export const getMessages = () => async (dispatch) => {
+  if (localStorage.token) {
+    setAuthToken(localStorage.token);
+  } else {
+    dispatch({
+      type: MESSAGES_ERROR,
+    });
+    return;
+  }
   try {
-    dispatch(setLoadingMessages())
-    const res = await axios.get(`/api/messages/${username}`);
+    dispatch(setLoadingMessages());
+    const res = await axios.get("/api/messages");
 
     dispatch({ type: GET_MESSAGES, payload: res.data });
   } catch (error) {
-    console.log(error);
     dispatch({
       type: MESSAGES_ERROR,
-      payload: error.response?.data?.msg || 'Error',
-    });
-  }
-};
-
-// Get message by Id
-export const getMessageById = (id) => async (dispatch) => {
-  try {
-    dispatch(setLoadingMessages())
-    const res = await axios.get(`/api/messages/find/${id}`);
-
-    dispatch({ type: GET_MESSAGE_BY_ID, payload: res.data });
-  } catch (error) {
-    console.log(error);
-    dispatch({
-      type: MESSAGES_ERROR,
-      payload: error.response?.data?.msg || 'Error',
+      payload: error.response?.data,
     });
   }
 };
@@ -46,33 +38,40 @@ export const getMessageById = (id) => async (dispatch) => {
 export const sendMessage = (formData) => async (dispatch) => {
   const config = {
     headers: {
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
     },
   };
+  if (localStorage.token) {
+    setAuthToken(localStorage.token);
+  } else {
+    dispatch({
+      type: MESSAGES_ERROR,
+    });
+    return;
+  }
 
   try {
-    dispatch(setLoadinSendMessages())
-    const res = await axios.post('/api/messages', formData, config);
+    dispatch(setLoadinSendMessages());
+    const res = await axios.post("/api/messages", formData, config);
 
     dispatch({ type: SEND_MESSAGE, payload: res.data });
   } catch (error) {
-    console.log(error);
     dispatch({
       type: MESSAGES_ERROR,
-      payload: error.response?.data?.msg || 'Error',
+      payload: error.response?.data,
     });
   }
 };
 
 // Set loading to true
 export const setLoadingMessages = () => {
-  return { type : SET_LOADING_MESSAGES}
-}
+  return { type: SET_LOADING_MESSAGES };
+};
 
 // Set loading send messages to true
 export const setLoadinSendMessages = () => {
-  return { type : SET_LOADING_SEND_MESSAGE}
-}
+  return { type: SET_LOADING_SEND_MESSAGE };
+};
 // Clear errors
 export const clearErrors = () => {
   return { type: CLEAR_ERRORS };

@@ -30,7 +30,6 @@ export const loadUser = () => async (dispatch) => {
 
   try {
     const res = await axios.get("/api/auth");
-    console.log(res)
     dispatch({
       type: USER_LOADED,
       payload: res.data,
@@ -134,7 +133,6 @@ export const updateProfile = (formData) => async (dispatch) => {
 
     dispatch({ type: UPDATE_PROFILE, payload: res.data });
   } catch (error) {
-    console.log(error);
     dispatch({
       type: AUTH_ERROR,
       payload: error.response?.data,

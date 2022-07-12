@@ -50,7 +50,6 @@ export const getPosts = () => async (dispatch) => {
 
     dispatch({ type: GET_POSTS, payload: res.data });
   } catch (error) {
-    console.log(error);
     dispatch({
       type: POSTS_ERROR,
       payload: error.response?.data || "Error",
@@ -66,7 +65,6 @@ export const getPostById = (id) => async (dispatch) => {
 
     dispatch({ type: GET_POST_BY_ID, payload: res.data });
   } catch (error) {
-    console.log(error);
     dispatch({
       type: POSTS_ERROR,
       payload: error.response?.data ,
@@ -91,7 +89,6 @@ export const getUserPosts = () => async (dispatch) => {
 
     dispatch({ type: GET_USER_POSTS, payload: res.data });
   } catch (error) {
-    console.log(error);
     dispatch({
       type: USER_POSTS_ERROR,
       payload: error.response?.data,

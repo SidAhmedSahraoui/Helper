@@ -4,7 +4,8 @@ const useStyles = createUseStyles({
     padding: '0px',
     marginBottom: '40px',
     display: 'flex',
-    justifyContent: 'flex-start'
+    justifyContent: 'space-evenly',
+    flexWrap: 'wrap'
   },
 });
 

@@ -1,7 +1,6 @@
 import {
   SEND_MESSAGE,
   GET_MESSAGES,
-  GET_MESSAGE_BY_ID,
   MESSAGES_ERROR,
   SET_LOADING_SEND_MESSAGE,
   SET_LOADING_MESSAGES,
@@ -21,6 +20,7 @@ export default (state = initialState, action) => {
     case SEND_MESSAGE:
       return {
         ...state,
+        message: action.payload,
         error: null,
         loading_send: false,
       };
@@ -28,12 +28,6 @@ export default (state = initialState, action) => {
       return {
         ...state,
         messages: action.payload,
-        loading: false,
-      };
-    case GET_MESSAGE_BY_ID:
-      return {
-        ...state,
-        message: action.payload,
         loading: false,
       };
     case MESSAGES_ERROR:

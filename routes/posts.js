@@ -25,7 +25,7 @@ router.get("/", async (req, res) => {
 //  @access      Private
 router.get("/user", auth, async (req, res) => {
   try {
-    const user = await User.findOne({_id: req.user.id})
+    const user = await User.findOne({ _id: req.user.id });
     const posts = await Post.find({
       user: user._id,
     }).sort({
@@ -41,34 +41,31 @@ router.get("/user", auth, async (req, res) => {
 //  @route       POST api/posts
 //  @desc        Add post
 //  @access      Public
-router.post(
-  "/",
-  async (req, res) => {
-    try {
-      const { user_id, title, content, category, willaya, phone } = req.body;
+router.post("/", async (req, res) => {
+  try {
+    const { user_id, title, content, category, willaya, phone } = req.body;
 
-      let user = await User.find({ _id: user_id });
-      if (!user || !user.length) {
-        return res.status(404).json("User not exists");
-      }
-
-      const newPost = new Post({
-        user: user_id,
-        title,
-        content,
-        category,
-        willaya,
-        phone
-      });
-
-      const post = await newPost.save();
-      res.json(post);
-    } catch (error) {
-      console.log(error.message);
-      res.status(500).send("Server Error");
+    let user = await User.find({ _id: user_id });
+    if (!user || !user.length) {
+      return res.status(404).json("User not exists");
     }
+
+    const newPost = new Post({
+      user: user_id,
+      title,
+      content,
+      category,
+      willaya,
+      phone,
+    });
+
+    const post = await newPost.save();
+    res.json(post);
+  } catch (error) {
+    console.log(error.message);
+    res.status(500).send("Server Error");
   }
-);
+});
 
 //  @route       GET api/posts/:id
 //  @desc        Get Post by Id
@@ -79,12 +76,11 @@ router.get("/:id", async (req, res) => {
 
     if (!post) return res.status(404).json("Post not found");
 
-    res.json(post)
-
+    res.json(post);
   } catch (error) {
     console.error(error.message);
     res.status(500).send("Server Error");
   }
 });
-      
+
 module.exports = router;

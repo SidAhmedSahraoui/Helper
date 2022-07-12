@@ -34,7 +34,6 @@ const Login = (props) => {
     e.preventDefault();
     if (password.length < 6) {
       setErr("Password must be at least 6 characters");
-      console.log(err);
     } else {
       setErr('')
       await login({ username, password });

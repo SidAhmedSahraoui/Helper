@@ -1,15 +1,51 @@
-import React from 'react';
-import useStyles from './messages-jss'
-const Messages = () => {
-    const classes = useStyles();
+import React, { useEffect } from "react";
+import { connect } from "react-redux";
+import useStyles from "./messages-jss";
+import { v4 as uuid } from "uuid";
 
-    return(
-        <>
-            <div className={classes.messages}>
+// Actions
+import { getMessages } from "../../../redux/actions/messageActions";
 
-                    Hello from messages
-                </div>
-        </>
-    )
-}
-export default Messages;
+// Layouts
+import MessageCard from "../../layouts/MessageCard";
+import Spinner from "../../layouts/Spinner";
+import NotFound from "../404";
+
+const Messages = (props) => {
+  const { messages, loading, getMessages } = props;
+
+  const classes = useStyles();
+
+  useEffect(() => {
+    getMessages();
+    // eslint-disable-next-line
+  }, []);
+
+  return (
+    <>
+      <div className={classes.messages}>
+        {!loading ? (
+          messages && messages.length !== 0 ? (
+            messages.map((msg) => (
+              <MessageCard
+                key={uuid()}
+                sender={msg.sender}
+                post={msg.post}
+                content={msg.content}
+              />
+            ))
+          ) : (
+            <NotFound />
+          )
+        ) : (
+          <Spinner />
+        )}
+      </div>
+    </>
+  );
+};
+const mapStateToProps = (state) => ({
+  messages: state.message.messages,
+  loading: state.message.loading,
+});
+export default connect(mapStateToProps, { getMessages })(Messages);

@@ -2,22 +2,25 @@ import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import useStyles from "./postShow-jss";
 import { Container } from "@mui/system";
+import { useParams, Navigate } from "react-router-dom";
 // Layouts
 import Post from "../../layouts/PostCard";
 import Alert from "../../layouts/Alert/Alert";
 // Actions
 import { getPostById } from "../../../redux/actions/postActions";
+import { sendMessage } from "../../../redux/actions/messageActions";
 
 const PostShow = (props) => {
-  const { post, loading, getPostById } = props;
+  const { isAuthenticated, post, msg, loading, getPostById, sendMessage } = props;
 
+  const params = useParams()
+  
   const [message, setMessage] = useState({
-    core: "",
-    sender: "",
-    receiver: "",
-  });
+    content: "",
+    post_id: ""
+    });
 
-  const { core, sender, receiver } = message;
+  const { content, post_id } = message;
   const classes = useStyles();
 
   const [err, setErr] = useState({
@@ -25,28 +28,31 @@ const PostShow = (props) => {
     msg: "",
   });
 
-  const onChange = (e) =>
-    setMessage({ ...message, [e.target.name]: e.target.value });
+  const onChange = (e) => setMessage({ ...message, [e.target.name]: e.target.value });
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    if (core === "") {
+    if (content === "" || post_id === "") {
       setErr({
         msg: "Please fill out all fields",
         type: "danger",
       });
     } else {
-      setErr({ msg: "Message sent", type: "success" });
-      // await addPost({ user_id, title, content, category, willaya, phone });
+       await sendMessage({ post_id, content});
+       setErr({ msg: msg || "Message sent" , type: "success" });
     }
   };
 
   useEffect(() => {
-    getPostById("62cc49b9621d8236681e8893");
-
+    getPostById(params.id);
+    setMessage({ ...message, post_id: params.id });
     // eslint-disable-next-line
   }, []);
 
+  
+  if (!isAuthenticated) {
+    return <Navigate to={"/"} />;
+  }
   return (
     <>
       <div className={classes.postShow}>
@@ -72,11 +78,11 @@ const PostShow = (props) => {
         <div className="message">
           <form className="form" onSubmit={onSubmit}>
             <textarea
-              name="core"
+              name="content"
               className="text-input"
               placeholder="Message..."
               onChange={onChange}
-              value={core}
+              value={content}
             />{" "}
             <input className="button" type="submit" value="Send" />
           </form>
@@ -87,7 +93,9 @@ const PostShow = (props) => {
   );
 };
 const mapStateToProps = (state) => ({
+  isAuthenticated: state.auth.isAuthenticated,
   post: state.post.post,
+  msg: state.message.message,
   loading: state.post.loading_posts,
 });
-export default connect(mapStateToProps, { getPostById })(PostShow);
+export default connect(mapStateToProps, { getPostById, sendMessage })(PostShow);

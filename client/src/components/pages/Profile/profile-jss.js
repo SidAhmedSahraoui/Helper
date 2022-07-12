@@ -8,8 +8,8 @@ const useStyles = createUseStyles({
         padding: '12px 16px',
         '& .welcome': {
             color: colors["text-gray-700"],
-            fontSize: '24px',
-            fontWeight: '400',
+            fontSize: '28px',
+            fontWeight: 800,
             paddingLeft: '26px',
         },
         '& .email': {
@@ -17,9 +17,9 @@ const useStyles = createUseStyles({
             flexWrap: 'wrap',
             justifyContent: 'flex-start',
             alignItems: 'center',
-            color: colors["text-gray-600"],
+            color: colors["text-gray-700"],
             fontSize: '18px',
-            fontWeight: '400',
+            fontWeight: 600,
             '& .element': {
                 margin: '24px'
             }

@@ -5,9 +5,13 @@ const MessageSchema = mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'users',
   },
-  request: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'requests',
+  sender: {
+    type: String,
+    required: true,
+  },
+  post: {
+    type: String,
+    required: true,
   },
   content: {
     type: String,

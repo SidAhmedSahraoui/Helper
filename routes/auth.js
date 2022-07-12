@@ -1,23 +1,23 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-const bcrypt = require('bcryptjs');
-const jwt = require('jsonwebtoken');
-const config = require('config');
-const auth = require('../middleware/auth');
-const { check, validationResult } = require('express-validator');
+const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
+const config = require("config");
+const auth = require("../middleware/auth");
+const { check, validationResult } = require("express-validator");
 
-const User = require('../models/User');
+const User = require("../models/User");
 
 //  @route       GET api/auth
 //  @desc        Get user
 //  @access      Private
-router.get('/', auth, async (req, res) => {
+router.get("/", auth, async (req, res) => {
   try {
-    const user = await User.findById(req.user.id).select('-password');
+    const user = await User.findById(req.user.id).select("-password");
     res.json(user);
   } catch (error) {
     console.log(error.message);
-    res.status(500).send('Server Error');
+    res.status(500).send("Server Error");
   }
 });
 
@@ -25,10 +25,10 @@ router.get('/', auth, async (req, res) => {
 //  @desc        Auth and get Token
 //  @access      Public
 router.post(
-  '/login',
+  "/login",
   [
-    check('username', 'Username is required').exists(),
-    check('password', 'Password is required').exists(),
+    check("username", "Username is required").exists(),
+    check("password", "Password is required").exists(),
   ],
   async (req, res) => {
     const errors = validationResult(req);
@@ -44,13 +44,13 @@ router.post(
       });
 
       if (!user) {
-        return res.status(400).json('Invalid Credentials');
+        return res.status(400).json("Invalid Credentials");
       }
 
       const isMatch = await bcrypt.compare(password, user.password);
 
       if (!isMatch) {
-        return res.status(400).json('Invalid Credentials');
+        return res.status(400).json("Invalid Credentials");
       }
 
       const payload = {
@@ -61,7 +61,7 @@ router.post(
 
       jwt.sign(
         payload,
-        config.get('jwtSecret'),
+        config.get("jwtSecret"),
         {
           expiresIn: 3600 * 1000,
         },
@@ -72,7 +72,7 @@ router.post(
       );
     } catch (error) {
       console.error(error.message);
-      res.status(500).send('Server Error');
+      res.status(500).send("Server Error");
     }
   }
 );
@@ -81,11 +81,11 @@ router.post(
 //  @desc        Register a user
 //  @access      Public
 router.post(
-  '/register',
+  "/register",
   [
-    check('username', 'Username is required').not().isEmpty(),
-    check('email', 'Please include a valid email').isEmail(),
-    check('password', 'Password must be more than 6 characters').isLength({
+    check("username", "Username is required").not().isEmpty(),
+    check("email", "Please include a valid email").isEmail(),
+    check("password", "Password must be more than 6 characters").isLength({
       min: 6,
     }),
   ],
@@ -96,16 +96,14 @@ router.post(
     }
 
     const { username, email, phone, password } = req.body;
-    console.log(req.body)
+    console.log(req.body);
     try {
       let user = await User.findOne({
         $or: [{ email: email }, { username: username }],
       });
 
       if (user) {
-        return res
-          .status(400)
-          .json('Username or Email already exists');
+        return res.status(400).json("Username or Email already exists");
       }
 
       user = new User({ username, email, phone, password });
@@ -121,7 +119,7 @@ router.post(
 
       jwt.sign(
         payload,
-        config.get('jwtSecret'),
+        config.get("jwtSecret"),
         {
           expiresIn: 3600 * 1000,
         },
@@ -132,7 +130,7 @@ router.post(
       );
     } catch (error) {
       console.error(error.message);
-      res.status(500).send('Server Error');
+      res.status(500).send("Server Error");
     }
   }
 );
@@ -141,16 +139,14 @@ router.post(
 //  @desc        Update user password
 //  @access      Private
 router.put(
-  '/',
+  "/",
   [
     auth,
     [
-      check('old_password', 'Old password is required').exists(),
-      check('new_password', 'Password must be at least 6 characters').isLength(
-        {
-          min: 6,
-        }
-      ),
+      check("old_password", "Old password is required").exists(),
+      check("new_password", "Password must be at least 6 characters").isLength({
+        min: 6,
+      }),
     ],
   ],
   async (req, res) => {
@@ -181,12 +177,12 @@ router.put(
         req.user.id,
         { $set: new_user },
         { new: true }
-      ).select('-password');
+      ).select("-password");
 
       res.json(user);
     } catch (error) {
       console.error(error.message);
-      res.status(500).send('Server Error');
+      res.status(500).send("Server Error");
     }
   }
 );
@@ -194,7 +190,7 @@ router.put(
 //  @route       PUT api/auth/edit
 //  @desc        Update a user
 //  @access      Private
-router.put('/edit', auth, async (req, res) => {
+router.put("/edit", auth, async (req, res) => {
   const { name, phone, willaya } = req.body;
 
   const new_user = {};
@@ -212,12 +208,12 @@ router.put('/edit', auth, async (req, res) => {
       req.user.id,
       { $set: new_user },
       { new: true }
-    ).select('-password');
+    ).select("-password");
 
     res.json(user);
   } catch (error) {
     console.error(error.message);
-    res.status(500).send('Server Error');
+    res.status(500).send("Server Error");
   }
 });
 
