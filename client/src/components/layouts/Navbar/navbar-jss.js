@@ -7,8 +7,7 @@ const useStyles = createUseStyles({
     padding: "12px 0px",
     position: "sticky",
     top: "0px",
-    backgroundColor: colors["text-gray-100"],
-    borderBottom: `3px solid ${colors["text-gray-400"]}`,
+    backgroundColor: "#fff",
     "& .container": {
       width: "80%",
       margin: "auto",

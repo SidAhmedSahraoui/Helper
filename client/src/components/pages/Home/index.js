@@ -19,6 +19,9 @@ import NotFound from "../404";
 import Spinner from "../../layouts/Spinner";
 import Post from "../../layouts/PostCard";
 
+// Images
+import Characters from "../../../images/Characters.png"
+import Eid from "../../../images/Eid.jpg"
 const Home = (props) => {
   const { isAuthenticated, posts, loading, getPosts } = props;
   const classes = useStyles();
@@ -33,6 +36,7 @@ const Home = (props) => {
       </Helmet>
       {isAuthenticated ? (
         <div className={`${classes.postsContainer}`}>
+          <div className="posts">
           {loading ? (
             <Spinner />
           ) : posts === null || posts.length === 0 ? (
@@ -46,9 +50,14 @@ const Home = (props) => {
                 content={post.content}
                 category={post.category}
                 city={post.willaya}
+                className="post"
               />
             ))
           )}
+          </div>
+          <div className="ad">
+              <img src={Eid} alt="eid" />
+          </div>
         </div>
       ) : (
         <div className={`${classes.page}`}>
@@ -61,7 +70,9 @@ const Home = (props) => {
                 <span>help</span> for those who <span>need</span>.
               </h5>
             </div>
-            <div className="col"></div>
+            <div className="col">
+              <img src={Characters} alt="chars" />
+            </div>
           </div>
           <h3>
             Our Services <span className="line"></span>

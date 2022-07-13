@@ -7,7 +7,25 @@ const useStyles = createUseStyles({
     margin: "auto",
     backgroundColor: colors["text-gray-300"],
     display: "flex",
-    flexWrap: "wrap",
+    justifyContent: 'space-evenly',
+    '& .ad': {
+      width: '20%',
+      '& img': {
+        width: '100%',
+        height: '100%'
+      },
+      "@media screen and (max-width: 1400px)": {
+        display: 'none'
+      },
+    },
+    '& .posts': {
+      display: "flex",
+      flexWrap: "wrap",
+      width: '70%',
+      "@media screen and (max-width: 1400px)": {
+        width: '100%'
+      },
+    }
   },
   page: {
     padding: "40px 20px",
@@ -15,27 +33,32 @@ const useStyles = createUseStyles({
     width: "80%",
     margin: "auto",
 
-    "& h1.title": {
-      color: colors["text-gray-900"],
-      fontWeight: "700",
-      fontSize: "3rem",
-      maxWidth: "450px",
-    },
-
-    "@media screen and (max-width: 576px)": {
+    "& .row": {
+      display: "flex",
+      justifyContent: 'space-between',
+      flexWrap: 'wrap',
       "& h1.title": {
-        fontSize: "2rem",
-      },
-    },
-
-    "& h5": {
-      color: colors["text-gray-600"],
-      fontWeight: "500",
-      maxWidth: "500px",
-      fontSize: "1.7rem",
-      "& span": {
+        color: colors["text-gray-900"],
         fontWeight: "700",
-        color: colors["text-gray-700"],
+        fontSize: "3rem",
+        maxWidth: "450px",
+      },
+
+      "@media screen and (max-width: 576px)": {
+        "& h1.title": {
+          fontSize: "2rem",
+        },
+      },
+
+      "& h5": {
+        color: colors["text-gray-600"],
+        fontWeight: "500",
+        maxWidth: "500px",
+        fontSize: "1.7rem",
+        "& span": {
+          fontWeight: "700",
+          color: colors["text-gray-700"],
+        },
       },
     },
 
