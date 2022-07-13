@@ -1,10 +1,13 @@
 {
-  "name": "Helper",
+  "name": "helper",
   "version": "1.0.0",
   "description": "Helper description",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
+    "build": "cd client && npm run build",
+    "install-client": "cd client && npm install",
+    "heroku-postbuild": "npm ru install-client && npm run build",
     "server": "nodemon server.js",
     "client": "npm start --prefix client",
     "clientinstall": "npm install --prefix client",
