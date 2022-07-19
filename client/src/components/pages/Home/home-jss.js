@@ -1,31 +1,45 @@
 import { createUseStyles } from "react-jss";
 import colors from "../../styling/colors";
-
+import { BUTTON_PRIMARY_OUTLINE, INPUT_TEXT } from "../../styling/styling"
 const useStyles = createUseStyles({
   postsContainer: {
     padding: "40px 20px",
     margin: "auto",
     backgroundColor: colors["text-gray-300"],
     display: "flex",
-    justifyContent: 'space-evenly',
-    '& .ad': {
-      width: '20%',
-      '& img': {
-        width: '100%',
-        height: '100%'
+    justifyContent: "space-evenly",
+    "& .ad": {
+      width: "20%",
+      "& img": {
+        width: "100%",
+        height: "70%",
+      },
+      "& .info": {
+        textAlign: "center",
+        "& p": {
+          display: "flex",
+          justifyContent: "space-evenly",
+          "& a": {
+            "& .icon": {
+              width: "35px",
+              height: "35px",
+              color: colors.primary,
+            },
+          },
+        },
       },
       "@media screen and (max-width: 1400px)": {
-        display: 'none'
+        display: "none",
       },
     },
-    '& .posts': {
+    "& .posts": {
       display: "flex",
       flexWrap: "wrap",
-      width: '70%',
+      width: "70%",
       "@media screen and (max-width: 1400px)": {
-        width: '100%'
+        width: "100%",
       },
-    }
+    },
   },
   page: {
     padding: "40px 20px",
@@ -35,13 +49,19 @@ const useStyles = createUseStyles({
 
     "& .row": {
       display: "flex",
-      justifyContent: 'space-between',
-      flexWrap: 'wrap',
+      justifyContent: "space-between",
+      flexWrap: "wrap",
       "& h1.title": {
         color: colors["text-gray-900"],
         fontWeight: "700",
         fontSize: "3rem",
         maxWidth: "450px",
+      },
+      "& .col": {
+        "& img": {
+          width: "100%",
+          height: "100%",
+        },
       },
 
       "@media screen and (max-width: 576px)": {
@@ -73,6 +93,55 @@ const useStyles = createUseStyles({
         backgroundColor: colors["text-gray-500"],
         display: "block",
         marginLeft: "125px",
+      },
+    },
+    "& .ad": {
+      width: "80%",
+      margin: "auto",
+      marginTop: "55px",
+      display: "flex",
+      flexWrap: "wrap",
+      justifyContent: "space-evenly",
+      "& img": {
+        width: "450px",
+      },
+      "& .info": {
+        textAlign: "center",
+        "& p": {
+          display: "flex",
+          justifyContent: "space-evenly",
+          "& a": {
+            margin: "12px",
+            "& .icon": {
+              width: "35px",
+              height: "35px",
+              color: colors.primary,
+            },
+          },
+        },
+        "& form": {
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "space-between",
+          "& input": {
+            ...INPUT_TEXT,
+            margin: "12px auto"
+          },
+          "& textarea": {
+            ...INPUT_TEXT,
+            height: "45px"
+          },
+          "& .btn": {
+            ...BUTTON_PRIMARY_OUTLINE,
+            width: "60%",
+          }
+        }
+      },
+      "@media screen and (max-width: 580px)": {
+        "& img": {
+          width: "80%",
+          margin: "auto",
+        },
       },
     },
     "& .services": {

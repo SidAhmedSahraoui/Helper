@@ -1,14 +1,20 @@
 import React, { useEffect } from "react";
 import Helmet from "react-helmet";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faGraduationCap,
   faCoins,
   faUserDoctor,
 } from "@fortawesome/free-solid-svg-icons";
+import {
+  faFacebook,
+  faInstagram,
+  faLinkedin,
+  faTelegram,
+} from "@fortawesome/free-brands-svg-icons";
 import { Card } from "@mui/material";
 import { v4 as uuid } from "uuid";
 import useStyles from "./home-jss";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { connect } from "react-redux";
 
 // Actions
@@ -20,8 +26,9 @@ import Spinner from "../../layouts/Spinner";
 import Post from "../../layouts/PostCard";
 
 // Images
-import Characters from "../../../images/Characters.png"
-import Eid from "../../../images/Eid.jpg"
+import Characters from "../../../images/Characters.png";
+import Social from "../../../images/social.svg";
+
 const Home = (props) => {
   const { isAuthenticated, posts, loading, getPosts } = props;
   const classes = useStyles();
@@ -37,26 +44,52 @@ const Home = (props) => {
       {isAuthenticated ? (
         <div className={`${classes.postsContainer}`}>
           <div className="posts">
-          {loading ? (
-            <Spinner />
-          ) : posts === null || posts.length === 0 ? (
-            <NotFound />
-          ) : (
-            posts.map((post) => (
-              <Post
-                key={uuid()}
-                id={post._id}
-                title={post.title}
-                content={post.content}
-                category={post.category}
-                city={post.willaya}
-                className="post"
-              />
-            ))
-          )}
+            {loading ? (
+              <Spinner />
+            ) : posts === null || posts.length === 0 ? (
+              <NotFound />
+            ) : (
+              posts.map((post) => (
+                <Post
+                  key={uuid()}
+                  id={post._id}
+                  title={post.title}
+                  content={post.content}
+                  category={post.category}
+                  city={post.willaya}
+                  className="post"
+                />
+              ))
+            )}
           </div>
           <div className="ad">
-              <img src={Eid} alt="eid" />
+            <img src={Social} alt="eid" />
+            <div className="info">
+              <h2>Contact us</h2>
+              <p>
+                {" "}
+                <a
+                  href="http://facebook.com/sidahmedsahraoui23"
+                  target="new-tab">
+                  <FontAwesomeIcon className="icon" icon={faFacebook} />
+                </a>
+                <a
+                  href="http://linkedin.com/sid-ahmed-sahraoui"
+                  target="new-tab">
+                  <FontAwesomeIcon className="icon" icon={faLinkedin} />
+                </a>
+                <a
+                  href="http://facebook.com/sid_ahmed_sahraoui"
+                  target="new-tab">
+                  <FontAwesomeIcon className="icon" icon={faInstagram} />
+                </a>
+                <a
+                  href="http://telegram.com/sidahmedsahraoui"
+                  target="new-tab">
+                  <FontAwesomeIcon className="icon" icon={faTelegram} />
+                </a>
+              </p>
+            </div>
           </div>
         </div>
       ) : (
@@ -110,6 +143,41 @@ const Home = (props) => {
                 wait for doctors or nurses to answer you
               </p>
             </Card>
+          </div>
+          <div className="ad">
+            <img src={Social} alt="eid" />
+            <div className="info">
+              <h2>Contact us</h2>
+              <p>
+                {" "}
+                <a
+                  href="http://facebook.com/sidahmedsahraoui23"
+                  target="new-tab">
+                  <FontAwesomeIcon className="icon" icon={faFacebook} />
+                </a>
+                <a
+                  href="http://linkedin.com/sid-ahmed-sahraoui"
+                  target="new-tab">
+                  <FontAwesomeIcon className="icon" icon={faLinkedin} />
+                </a>
+                <a
+                  href="http://facebook.com/sid_ahmed_sahraoui"
+                  target="new-tab">
+                  <FontAwesomeIcon className="icon" icon={faInstagram} />
+                </a>
+                <a
+                  href="http://telegram.com/sidahmedsahraoui"
+                  target="new-tab">
+                  <FontAwesomeIcon className="icon" icon={faTelegram} />
+                </a>
+              </p>
+              <form action="">
+                <input type="text" placeholder="Name" />
+                <input type="email" name="email" placeholder="Email" />
+                <textarea name="content" placeholder="Message..."></textarea>
+                <input className="btn" type="submit" value="Submit" />
+              </form>
+            </div>
           </div>
         </div>
       )}

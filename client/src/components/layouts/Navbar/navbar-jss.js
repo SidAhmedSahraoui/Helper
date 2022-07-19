@@ -5,9 +5,8 @@ import { BUTTON_PRIMARY } from "../../styling/styling";
 const useStyles = createUseStyles({
   navbar: {
     padding: "12px 0px",
-    position: "sticky",
-    top: "0px",
-    backgroundColor: "#fff",
+    backgroundColor: colors["text-gray-300"],
+    borderBottom: `3px solid ${colors["text-gray-400"]}`,
     "& .container": {
       width: "80%",
       margin: "auto",

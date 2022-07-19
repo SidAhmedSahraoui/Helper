@@ -3,7 +3,7 @@
  
 **Helper** is a web application built using _ReactJs_ _NodeJs_ _ExpressJs_ _MongoDB_  providing a service for sharing medical, education and financial help request posts.
 
-### Screenshots
+### _Screenshots_
 
 <br>
 
