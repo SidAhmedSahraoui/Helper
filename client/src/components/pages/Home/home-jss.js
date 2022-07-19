@@ -44,12 +44,12 @@ const useStyles = createUseStyles({
   page: {
     padding: "40px 20px",
     marginBottom: "40px",
-    width: "80%",
+    width: "90%",
     margin: "auto",
 
     "& .row": {
       display: "flex",
-      justifyContent: "space-between",
+      justifyContent: "space-around",
       flexWrap: "wrap",
       "& h1.title": {
         color: colors["text-gray-900"],
@@ -87,6 +87,8 @@ const useStyles = createUseStyles({
       fontWeight: "700",
       fontSize: "1.7rem",
       maxWidth: "250px",
+      marginLeft: "45px",
+
       "& .line": {
         width: "55px",
         height: "5px",

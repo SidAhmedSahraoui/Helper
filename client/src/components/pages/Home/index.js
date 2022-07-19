@@ -35,7 +35,7 @@ const Home = (props) => {
   useEffect(() => {
     getPosts();
     // eslint-disable-next-line
-  }, []);
+  }, [isAuthenticated]);
   return (
     <>
       <Helmet>

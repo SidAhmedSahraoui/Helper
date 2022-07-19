@@ -23,7 +23,7 @@ const Navbar = (props) => {
               <FontAwesomeIcon className='icon mr-2' icon={faUserAlt} />
               { user && (user.username || user.email)}
             </Link>
-            <a className='dropdown-item' onClick={onLogOut} href='#logout'>
+            <a className='dropdown-item' onClick={onLogOut} href='/'>
               <FontAwesomeIcon className='icon mr-2' icon={faSignOutAlt} />
               Sign out
             </a>
