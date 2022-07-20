@@ -1,4 +1,4 @@
 {
-  "mongoURI": "mongodb://localhost:27017/Helper",
+  "mongoURI": "mongodb://localhost:27017/helper_db",
   "jwtSecret": "123456"
 }

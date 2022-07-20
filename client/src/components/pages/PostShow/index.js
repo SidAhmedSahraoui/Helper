@@ -51,7 +51,7 @@ const PostShow = (props) => {
     getPostById(params.id);
     setMessage({ ...message, post_id: params.id });
     // eslint-disable-next-line
-  }, []);
+  }, [post_id]);
 
   if (!isAuthenticated) {
     return <Navigate to={"/"} />;
@@ -80,6 +80,7 @@ const PostShow = (props) => {
           </div>
           <div className="message">
             <form className="form" onSubmit={onSubmit}>
+              <h3>Drop Message</h3>
               <textarea
                 name="content"
                 className="text-input"

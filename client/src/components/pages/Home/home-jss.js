@@ -5,13 +5,13 @@ const useStyles = createUseStyles({
   postsContainer: {
     padding: "40px 20px",
     margin: "auto",
-    backgroundColor: colors["text-gray-300"],
+    backgroundColor: colors["text-gray-200"],
     display: "flex",
     justifyContent: "space-evenly",
     "& .ad": {
-      width: "20%",
+      width: "450px",
       "& img": {
-        width: "100%",
+        width: "450px",
         height: "70%",
       },
       "& .info": {
@@ -28,7 +28,7 @@ const useStyles = createUseStyles({
           },
         },
       },
-      "@media screen and (max-width: 1400px)": {
+      "@media screen and (max-width: 900px)": {
         display: "none",
       },
     },
@@ -58,6 +58,7 @@ const useStyles = createUseStyles({
         maxWidth: "450px",
       },
       "& .col": {
+        width: "450px",
         "& img": {
           width: "100%",
           height: "100%",
@@ -104,6 +105,8 @@ const useStyles = createUseStyles({
       display: "flex",
       flexWrap: "wrap",
       justifyContent: "space-evenly",
+      backgroundColor: colors["text-gray-200"],
+      borderRadius: "8px",
       "& img": {
         width: "450px",
       },
@@ -111,6 +114,7 @@ const useStyles = createUseStyles({
         textAlign: "center",
         "& p": {
           display: "flex",
+          flexWrap: "wrap",
           justifyContent: "space-evenly",
           "& a": {
             margin: "12px",
@@ -127,7 +131,8 @@ const useStyles = createUseStyles({
           justifyContent: "space-between",
           "& input": {
             ...INPUT_TEXT,
-            margin: "12px auto"
+            margin: "12px auto",
+            
           },
           "& textarea": {
             ...INPUT_TEXT,
@@ -135,8 +140,16 @@ const useStyles = createUseStyles({
           },
           "& .btn": {
             ...BUTTON_PRIMARY_OUTLINE,
-            width: "60%",
-          }
+            width: "40%",
+          },
+          "@media screen and (max-width: 576px)": {
+            "& input": {
+              width: "50%",
+            },
+          "& textarea": {
+            width: "50%",
+            margin: "auto"
+          }},
         }
       },
       "@media screen and (max-width: 580px)": {

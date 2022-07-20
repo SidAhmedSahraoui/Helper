@@ -23,7 +23,6 @@ const useStyles = createUseStyles({
         textDecoration: "none",
         "& .logo": {
           color: colors.primary,
-          fontFamily: "monospace",
           fontSize: "28px",
         },
       },

@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import useStyles from "./posts-jss";
-import Post from "../../layouts/PostCard";
 import { v4 as uuid } from "uuid";
 import { connect } from "react-redux";
 
@@ -8,6 +7,7 @@ import { connect } from "react-redux";
 import { getUserPosts } from "../../../redux/actions/postActions";
 
 // Layouts
+import Post from "../../layouts/PostCard";
 import NotFound from "../404";
 
 const Posts = (props) => {
@@ -34,6 +34,8 @@ const Posts = (props) => {
               content={post.content}
               category={post.category}
               city={post.willaya}
+              presentation={true}
+              deletable={true}
             />
           ))
         )}

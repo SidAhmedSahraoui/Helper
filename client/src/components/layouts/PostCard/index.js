@@ -10,11 +10,15 @@ import {
   faPaperPlane,
   faLocationDot,
 } from "@fortawesome/free-solid-svg-icons";
+import { Button } from "@mui/material";
 
 const Post = (props) => {
   const classes = useStyles();
-  const { id, title, content, category, city, presentation } = props;
-
+  const { id, title, content, category, city, presentation, deletable } = props;
+  const onDelete = (e) => {
+    e.preventDefault()
+    console.log("deleted!");
+  }
   return (
     <div className={classes.post}>
       <div className="head">
@@ -49,6 +53,9 @@ const Post = (props) => {
           </Link>
         </div>
       )}
+      {deletable ? (
+        <Button onClick={onDelete} variant="primary">Delete</Button>
+      ) : null}
     </div>
   );
 };

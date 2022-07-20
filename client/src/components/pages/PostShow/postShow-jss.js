@@ -8,7 +8,7 @@ import {
 
 const useStyles = createUseStyles({
   postShow: {
-    backgroundColor: colors["text-gray-300"],
+    backgroundColor: colors["text-gray-200"],
     height: "90vh",
     padding: "24px 12px",
     "& .main": {

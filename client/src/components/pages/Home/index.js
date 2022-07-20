@@ -26,16 +26,19 @@ import Spinner from "../../layouts/Spinner";
 import Post from "../../layouts/PostCard";
 
 // Images
-import Characters from "../../../images/Characters.png";
+import Characters from "../../../images/questions.svg";
 import Social from "../../../images/social.svg";
 
 const Home = (props) => {
   const { isAuthenticated, posts, loading, getPosts } = props;
   const classes = useStyles();
+
   useEffect(() => {
-    getPosts();
+    if (isAuthenticated) {
+      getPosts();
+    }
     // eslint-disable-next-line
-  }, [isAuthenticated]);
+  }, []);
   return (
     <>
       <Helmet>
@@ -83,9 +86,7 @@ const Home = (props) => {
                   target="new-tab">
                   <FontAwesomeIcon className="icon" icon={faInstagram} />
                 </a>
-                <a
-                  href="http://telegram.com/sidahmedsahraoui"
-                  target="new-tab">
+                <a href="http://telegram.com/sidahmedsahraoui" target="new-tab">
                   <FontAwesomeIcon className="icon" icon={faTelegram} />
                 </a>
               </p>
@@ -144,8 +145,8 @@ const Home = (props) => {
               </p>
             </Card>
           </div>
-          <div className="ad">
-            <img src={Social} alt="eid" />
+          <Card className="ad">
+            <img src={Social} alt="social" />
             <div className="info">
               <h2>Contact us</h2>
               <p>
@@ -165,9 +166,7 @@ const Home = (props) => {
                   target="new-tab">
                   <FontAwesomeIcon className="icon" icon={faInstagram} />
                 </a>
-                <a
-                  href="http://telegram.com/sidahmedsahraoui"
-                  target="new-tab">
+                <a href="http://telegram.com/sidahmedsahraoui" target="new-tab">
                   <FontAwesomeIcon className="icon" icon={faTelegram} />
                 </a>
               </p>
@@ -178,7 +177,7 @@ const Home = (props) => {
                 <input className="btn" type="submit" value="Submit" />
               </form>
             </div>
-          </div>
+          </Card>
         </div>
       )}
     </>

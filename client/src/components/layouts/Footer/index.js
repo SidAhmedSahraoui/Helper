@@ -15,7 +15,7 @@ const Footer = () => {
               ❤️
             </span>{" "}
             By{" "}
-            <a href="https://github.com/SidAhmedSahraoui/Helper">
+            <a href="https://github.com/SidAhmedSahraoui">
               <FontAwesomeIcon className="icon" icon={faGithub} />
             </a>
           </h4>
