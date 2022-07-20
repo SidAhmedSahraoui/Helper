@@ -38,7 +38,11 @@ const Home = (props) => {
       getPosts();
     }
     // eslint-disable-next-line
-  }, []);
+  }, [isAuthenticated]);
+  const onSubmit = async (e) => {
+    e.preventDefault()
+    console.log("first")
+  }
   return (
     <>
       <Helmet>
@@ -170,7 +174,7 @@ const Home = (props) => {
                   <FontAwesomeIcon className="icon" icon={faTelegram} />
                 </a>
               </p>
-              <form action="">
+              <form onSubmit={onSubmit}>
                 <input type="text" placeholder="Name" />
                 <input type="email" name="email" placeholder="Email" />
                 <textarea name="content" placeholder="Message..."></textarea>

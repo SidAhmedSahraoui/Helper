@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import useStyles from "./postShow-jss";
 import { Container } from "@mui/system";
 import { useParams, Navigate } from "react-router-dom";
-
+import { Helmet } from "react-helmet";
 // Layouts
 import Post from "../../layouts/PostCard";
 import Alert from "../../layouts/Alert/Alert";
@@ -58,6 +58,9 @@ const PostShow = (props) => {
   }
   return (
     <>
+      <Helmet>
+        <title>Helper | Post</title>
+      </Helmet>
       <div className={classes.postShow}>
         {err.msg === "" ? null : (
           <Container style={{ marginBottom: "12px", width: "50%" }}>

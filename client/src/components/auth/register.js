@@ -54,7 +54,7 @@ const Register = (props) => {
       <Helmet>
         <title>Helper | Register</title>
       </Helmet>
-      <Card className={`${classes.auth} card-shadow text-center`}>
+      <Card className={classes.auth}>
         {(err || error) && <Alert severity="error">{err || error}</Alert>}
         <h3 className="title">Sign Up</h3>
         <h6 className="subtitle">Start helping others or getting help.</h6>

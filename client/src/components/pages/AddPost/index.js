@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import useStyles from "./AddPost-jss";
 import { connect } from "react-redux";
 import { Container } from "@mui/material";
-
+import { Helmet } from "react-helmet";
 // Actions
 import { loadUser } from "../../../redux/actions/authActions";
 import { addPost } from "../../../redux/actions/postActions";
@@ -53,55 +53,60 @@ const AddPost = (props) => {
   }, []);
 
   return (
-    <div className={classes.AddPost}>
-      {err.msg === "" ? null : (
-        <Container style={{ marginBottom: "12px" }}>
-          <Alert type={err.type} severity="error">
-            {err.msg}
-          </Alert>
-        </Container>
-      )}
-      <form className="form" onSubmit={onSubmit}>
-        <h3 className="title">Add a new help request</h3>
-        <div className="from-group">
-          <input
-            type="text"
-            name="title"
-            className="text-input"
-            placeholder="Title"
-            value={title}
-            onChange={onChange}
-          />
-        </div>
-        <div className="from-group">
-          <textarea
-            name="content"
-            className="text-input"
-            placeholder="Description"
-            value={content}
-            onChange={onChange}
-          />
-        </div>
-        <div className="from-group">
-          <select
-            name="category"
-            value={category}
-            className="select-input"
-            onChange={onChange}>
-            <option value="Medical">Medical</option>
-            <option value="Education">Education</option>
-            <option value="Financial">Financial</option>
-          </select>
-        </div>
-        <div className="from-group">
-          {loading_add_post ? (
-            <Spinner />
-          ) : (
-            <input className="button" type="submit" value="Submit" />
-          )}
-        </div>
-      </form>
-    </div>
+    <>
+      <Helmet>
+        <title>Helper | Add Post</title>
+      </Helmet>
+      <div className={classes.AddPost}>
+        {err.msg === "" ? null : (
+          <Container style={{ marginBottom: "12px" }}>
+            <Alert type={err.type} severity="error">
+              {err.msg}
+            </Alert>
+          </Container>
+        )}
+        <form className="form" onSubmit={onSubmit}>
+          <h3 className="title">Add a new help request</h3>
+          <div className="from-group">
+            <input
+              type="text"
+              name="title"
+              className="text-input"
+              placeholder="Title"
+              value={title}
+              onChange={onChange}
+            />
+          </div>
+          <div className="from-group">
+            <textarea
+              name="content"
+              className="text-input"
+              placeholder="Description"
+              value={content}
+              onChange={onChange}
+            />
+          </div>
+          <div className="from-group">
+            <select
+              name="category"
+              value={category}
+              className="select-input"
+              onChange={onChange}>
+              <option value="Medical">Medical</option>
+              <option value="Education">Education</option>
+              <option value="Financial">Financial</option>
+            </select>
+          </div>
+          <div className="from-group">
+            {loading_add_post ? (
+              <Spinner />
+            ) : (
+              <input className="button" type="submit" value="Submit" />
+            )}
+          </div>
+        </form>
+      </div>
+    </>
   );
 };
 const mapStateToProps = (state) => ({

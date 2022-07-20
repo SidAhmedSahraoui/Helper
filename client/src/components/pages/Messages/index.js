@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import useStyles from "./messages-jss";
 import { v4 as uuid } from "uuid";
-
+import { Helmet } from "react-helmet";
 // Actions
 import { getMessages } from "../../../redux/actions/messageActions";
 
@@ -23,6 +23,9 @@ const Messages = (props) => {
 
   return (
     <>
+      <Helmet>
+        <title>Helper | Messages</title>
+      </Helmet>
       <div className={classes.messages}>
         {!loading ? (
           messages && messages.length !== 0 ? (

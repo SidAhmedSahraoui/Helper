@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import useStyles from "./posts-jss";
 import { v4 as uuid } from "uuid";
 import { connect } from "react-redux";
-
+import { Helmet } from "react-helmet";
 // Actions
 import { getUserPosts } from "../../../redux/actions/postActions";
 
@@ -22,6 +22,9 @@ const Posts = (props) => {
 
   return (
     <>
+      <Helmet>
+        <title>Helper | Posts</title>
+      </Helmet>
       <div className={classes.posts}>
         {posts === null || posts.length === 0 || loading ? (
           <NotFound />
