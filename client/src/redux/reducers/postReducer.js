@@ -1,5 +1,6 @@
 import {
   ADD_POST,
+  DELETE_POST,
   ADD_POST_ERROR,
   GET_POSTS,
   GET_POST_BY_ID,
@@ -31,7 +32,12 @@ export default (state = initialState, action) => {
         ...action.payload,
         loading_add_post: false,
       };
-
+    case DELETE_POST:
+      return {
+        ...state,
+        error:action.payload,
+        loading: false,
+      };
     case GET_POSTS:
       return {
         ...state,

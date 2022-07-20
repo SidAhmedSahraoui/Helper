@@ -14,6 +14,7 @@ const useStyles = createUseStyles({
     },
     "&:hover": {
       borderBottom: `4px solid ${colors.primary}`,
+      padding: "0px"
     },
     "& .head": {
       color: colors["text-gray-800"],

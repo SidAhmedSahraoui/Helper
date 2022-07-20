@@ -13,6 +13,7 @@ export const UPDATE_PASSWORD = "UPDATE_PASSWORD";
 
 // post
 export const ADD_POST = "ADD_POST";
+export const DELETE_POST = "DELETE_POST";
 export const GET_POSTS = "GET_POSTS";
 export const GET_POST_BY_ID = "GET_POST_BY_ID";
 export const GET_USER_POSTS = "GET_USER_POSTS";

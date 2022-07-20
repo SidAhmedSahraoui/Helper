@@ -2,6 +2,7 @@ import axios from "axios";
 
 import {
   ADD_POST,
+  DELETE_POST,
   ADD_POST_ERROR,
   GET_POSTS,
   GET_POST_BY_ID,
@@ -41,6 +42,32 @@ export const addPost = (formData) => async (dispatch) => {
   }
 };
 
+// Delete Post
+export const deletePost = (id) => async (dispatch) => {
+  if (localStorage.token) {
+    setAuthToken(localStorage.token);
+  } else {
+    dispatch({
+      type: POSTS_ERROR,
+    });
+    return;
+  }
+  try {
+    dispatch(setLoadingPosts());
+
+    const res = await axios.delete("/api/posts/" + id);
+
+    dispatch({
+      type: DELETE_POST,
+      payload: res.data,
+    });
+  } catch (error) {
+    dispatch({
+      type: POSTS_ERROR,
+      payload: error.response?.data,
+    });
+  }
+};
 // Get  Posts
 export const getPosts = () => async (dispatch) => {
   try {

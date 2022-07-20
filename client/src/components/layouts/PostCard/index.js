@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import useStyles from "./Post-jss";
+import { connect } from "react-redux"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faGraduationCap,
@@ -11,13 +12,16 @@ import {
   faLocationDot,
 } from "@fortawesome/free-solid-svg-icons";
 import { Button } from "@mui/material";
+// Actions 
+import { deletePost } from "../../../redux/actions/postActions"
 
 const Post = (props) => {
   const classes = useStyles();
-  const { id, title, content, category, city, presentation, deletable } = props;
-  const onDelete = (e) => {
+  const { id, title, content, category, city, presentation, deletable, deletePost } = props;
+  
+  const onDelete = async (e) => {
     e.preventDefault()
-    console.log("deleted!");
+    await deletePost(id);
   }
   return (
     <div className={classes.post}>
@@ -59,4 +63,7 @@ const Post = (props) => {
     </div>
   );
 };
-export default Post;
+const mapStateToProps = (state) => ({
+  error : state.post.error
+})
+export default connect(mapStateToProps, {deletePost}) (Post);
