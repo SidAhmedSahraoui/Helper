@@ -8,10 +8,10 @@ const useStyles = createUseStyles({
     "& .container": {
       textAlign: "center",
       "& h4": {
-        color: colors["text-gray-800"],
+        color: colors["text-gray-900"],
         margin: "0px",
         "& .icon": {
-          color: colors["text-gray-800"],
+          color: colors["text-gray-900"],
           fontSize: "1.3rem",
         },
       },
@@ -19,7 +19,7 @@ const useStyles = createUseStyles({
         margin: "3px",
         fontSize: "1.0rem",
         fontWeight: "600",
-        color: colors["text-gray-800"],
+        color: colors["text-gray-900"],
       },
     },
   },

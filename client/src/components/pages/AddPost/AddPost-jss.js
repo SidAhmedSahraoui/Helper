@@ -14,7 +14,6 @@ const useStyles = createUseStyles({
       width: "450px",
       margin: "auto",
       backgroundColor: `${colors["text-gray-100"]}`,
-      border: `2px solid ${colors["text-gray-500"]}`,
       "@media screen and (max-width: 660px)": {
         width: "90%",
       },

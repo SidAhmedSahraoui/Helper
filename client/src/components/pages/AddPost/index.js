@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import useStyles from "./AddPost-jss";
 import { connect } from "react-redux";
-import { Container } from "@mui/material";
+import { Container, Card } from "@mui/material";
 import { Helmet } from "react-helmet";
 // Actions
 import { loadUser } from "../../../redux/actions/authActions";
@@ -65,7 +65,8 @@ const AddPost = (props) => {
             </Alert>
           </Container>
         )}
-        <form className="form" onSubmit={onSubmit}>
+        <Card className="form">
+        <form  onSubmit={onSubmit}>
           <h3 className="title">Add a new help request</h3>
           <div className="from-group">
             <input
@@ -105,6 +106,7 @@ const AddPost = (props) => {
             )}
           </div>
         </form>
+        </Card>
       </div>
     </>
   );
