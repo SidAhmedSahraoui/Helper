@@ -16,7 +16,6 @@ router.get("/", auth, async (req, res) => {
     const user = await User.findById(req.user.id).select("-password");
     res.json(user);
   } catch (error) {
-    console.log(error.message);
     res.status(500).send("Server Error");
   }
 });
@@ -71,7 +70,6 @@ router.post(
         }
       );
     } catch (error) {
-      console.error(error.message);
       res.status(500).send("Server Error");
     }
   }
@@ -96,7 +94,6 @@ router.post(
     }
 
     const { username, email, phone, password } = req.body;
-    console.log(req.body);
     try {
       let user = await User.findOne({
         $or: [{ email: email }, { username: username }],
@@ -129,7 +126,6 @@ router.post(
         }
       );
     } catch (error) {
-      console.error(error.message);
       res.status(500).send("Server Error");
     }
   }
@@ -181,7 +177,6 @@ router.put(
 
       res.json(user);
     } catch (error) {
-      console.error(error.message);
       res.status(500).send("Server Error");
     }
   }
@@ -212,7 +207,6 @@ router.put("/edit", auth, async (req, res) => {
 
     res.json(user);
   } catch (error) {
-    console.error(error.message);
     res.status(500).send("Server Error");
   }
 });

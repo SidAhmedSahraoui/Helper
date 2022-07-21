@@ -15,7 +15,6 @@ router.get("/", async (req, res) => {
     });
     res.json(posts);
   } catch (error) {
-    console.log(error.message);
     res.status(500).send("Server Error");
   }
 });
@@ -33,7 +32,6 @@ router.get("/user", auth, async (req, res) => {
     });
     res.json(posts);
   } catch (error) {
-    console.log(error.message);
     res.status(500).send("Server Error");
   }
 });
@@ -62,7 +60,6 @@ router.post("/", async (req, res) => {
     const post = await newPost.save();
     res.json(post);
   } catch (error) {
-    console.log(error.message);
     res.status(500).send("Server Error");
   }
 });
@@ -78,7 +75,6 @@ router.get("/:id", async (req, res) => {
 
     res.json(post);
   } catch (error) {
-    console.error(error.message);
     res.status(500).send("Server Error");
   }
 });
@@ -99,7 +95,6 @@ router.delete("/:id", auth, async (req, res) => {
 
     res.json("Post removed");
   } catch (error) {
-    console.error(error.message);
     res.status(500).send("Server Error");
   }
 });

@@ -17,7 +17,6 @@ router.get("/", auth, async (req, res) => {
     });
     res.json(messages);
   } catch (error) {
-    console.log(error.message);
     res.status(500).send("Server Error");
   }
 });
@@ -71,7 +70,6 @@ router.post(
       const message = await newMessage.save();
       res.json("Message sent");
     } catch (error) {
-      console.log(error.message);
       res.status(500).send("Server Error");
     }
   }
