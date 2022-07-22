@@ -9,6 +9,17 @@ const useStyles = createUseStyles({
     boxShadow: "0px 12px 24px rgb(109,184,241, 0.16)",
     backgroundColor: "#fff",
     height: "210px",
+    "& .button": {
+      display: "flex",
+      margin: "auto",
+      backgroundColor: colors.danger,
+      border: `2px solid ${colors.danger}`,
+      color: colors["text-gray-100"] ,
+      "&:hover": {
+        backgroundColor: colors["text-gray-100"] ,
+        color: colors.danger ,
+      },
+    },
     "@media screen and (max-width: 550px)": {
       width: "80%",
     },

@@ -58,7 +58,7 @@ const Post = (props) => {
         </div>
       )}
       {deletable ? (
-        <Button onClick={onDelete} variant="primary">Delete</Button>
+        <Button onClick={onDelete} className="button" variant="primary">Delete</Button>
       ) : null}
     </div>
   );
