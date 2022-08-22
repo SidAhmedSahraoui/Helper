@@ -4,15 +4,11 @@
 **Helper** is a web application built using _ReactJs_ _NodeJs_ _ExpressJs_ _MongoDB_  providing a service for sharing medical, education and financial help request posts.
 
 ### _Screenshots_
-<div><img src="./screenshots/home1.PNG" width="800" alt="Home Page"></div>
-
-<div><img src="./screenshots/home2.PNG" width="800" alt="Home 2 Page"></div>
-
-<div><img src="./screenshots/profile.PNG" width="800" alt="Profile Page"></div>
+<div><img src="./screenshots/PlanDraftUI.png" width="800" alt="Home"></div>
 
 <br>
 
-**Live preview:** [Helper]   Coming soon
+**Live preview:** [Helper](https://helper-alpha.vercel.app/)
 
 ### How to use
 
